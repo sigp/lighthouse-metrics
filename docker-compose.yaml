@@ -1,0 +1,32 @@
+#
+# Metrics services -- provides a web GUI to monitor Lighthouse nodes.
+#
+version: "3.7"
+
+services:
+    prometheus:
+        build:
+            context: prometheus
+        volumes:
+            - prometheus-data:/prometheus
+            - type: bind
+              source: ./scrape-targets
+              target: /prometheus/targets
+        ports:
+            - 9090:9090
+        restart: always
+        network_mode: host
+    grafana:
+        build:
+            context: grafana
+        volumes:
+            - grafana-data:/var/lib/grafana
+        ports:
+            - 3000:3000
+        restart: always
+        network_mode: host
+
+volumes:
+    grafana-data:
+    prometheus-data:
+    targets:
