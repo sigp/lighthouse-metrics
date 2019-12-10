@@ -1,0 +1,28 @@
+# Lighthouse Metrics
+
+Provides a `docker-compose` environment which scrapes metrics from Lighthouse
+nodes using Prometheus and presents them in a browser-based Grafana GUI.
+
+## Usage
+
+1. Start a lighthouse node with `$ lighthouse beacon --http`
+  - The `--http` flag is required for metrics.
+1. Bring the environment up with `$ docker-compose up`.
+1. Ensure that Prometheus can access your Lighthouse node by ensuring it is in
+   the `UP` state in the [Prometheus web UI](http://localhost:9090/targets).
+1. Browse to [http://localhost:3000](http://localhost:3000)
+  - Username: `admin`
+  - Password: `changeme`
+1. Import some dashboards from the `dashboards` directory in this repo:
+  - In the Grafana UI, go to `Dashboards` -> `Manage` -> `Import` -> `Upload .json file`.
+  - The `Summary.json` dashboard is a good place to start.
+
+## Maintenance and Contributing
+
+The Lighthouse team has a hosted version of this stack where we do the
+majority of the monitoring. The dashboards in this repo are not guaranteed to
+be kept updated as we add/modify metrics to Lighthouse. If you're having
+problems, please reach out and we can update the dashboards here.
+
+Feel free to create your own dashboards, export them and submit them here as
+PRs.
