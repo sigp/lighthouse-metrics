@@ -6,16 +6,16 @@ nodes using Prometheus and presents them in a browser-based Grafana GUI.
 ## Usage
 
 1. Start a lighthouse node with `$ lighthouse beacon --http`
-  - The `--http` flag is required for metrics.
+    - The `--http` flag is required for metrics.
 1. Bring the environment up with `$ docker-compose up`.
 1. Ensure that Prometheus can access your Lighthouse node by ensuring it is in
    the `UP` state in the [Prometheus web UI](http://localhost:9090/targets).
 1. Browse to [http://localhost:3000](http://localhost:3000)
-  - Username: `admin`
-  - Password: `changeme`
+    - Username: `admin`
+    - Password: `changeme`
 1. Import some dashboards from the `dashboards` directory in this repo:
-  - In the Grafana UI, go to `Dashboards` -> `Manage` -> `Import` -> `Upload .json file`.
-  - The `Summary.json` dashboard is a good place to start.
+    - In the Grafana UI, go to `Dashboards` -> `Manage` -> `Import` -> `Upload .json file`.
+    - The `Summary.json` dashboard is a good place to start.
 
 ## Maintenance and Contributing
 
