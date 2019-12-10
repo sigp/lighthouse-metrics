@@ -1,9 +1,10 @@
 # Lighthouse Metrics
 
+[![metrics.png](https://i.postimg.cc/Jh7rxtgp/metrics.png)](https://postimg.cc/4YMRN4Xc)
+
 Provides a `docker-compose` environment which scrapes metrics from Lighthouse
 nodes using Prometheus and presents them in a browser-based Grafana GUI.
 
-[![metrics.png](https://i.postimg.cc/0jw2SDw4/metrics.png)](https://postimg.cc/xN92DkgG)
 
 ## Usage
 
