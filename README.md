@@ -9,7 +9,7 @@ nodes using Prometheus and presents them in a browser-based Grafana GUI.
     - The `--http` flag is required for metrics.
 1. Bring the environment up with `$ docker-compose up`.
 1. Ensure that Prometheus can access your Lighthouse node by ensuring it is in
-   the `UP` state in the [Prometheus web UI](http://localhost:9090/targets).
+   the `UP` state at [http://localhost:9090/targets](http://localhost:9090/targets).
 1. Browse to [http://localhost:3000](http://localhost:3000)
     - Username: `admin`
     - Password: `changeme`
