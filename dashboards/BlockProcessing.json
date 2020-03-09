@@ -15,18 +15,38 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 4,
   "links": [],
   "panels": [
     {
       "content": "\n# Block Processing Metrics\n\nMetrics collected from a Lighthouse Beacon Node about a `BeaconChain` processing `BeaconBlocks`.\n\nCollected from the `beacon_chain` crate.\n\n\n\n",
+      "datasource": null,
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 9,
         "x": 0,
         "y": 0
       },
       "id": 11,
+      "links": [],
+      "mode": "markdown",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "content": "\n### Committees/Shuffling\n\n\nCheck that the committees cache is build, building if not.\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 14,
       "links": [],
       "mode": "markdown",
       "options": {},
@@ -43,11 +63,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 15,
         "x": 9,
-        "y": 0
+        "y": 2
       },
       "id": 2,
       "legend": {
@@ -55,7 +76,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": false,
+        "show": true,
         "total": false,
         "values": false
       },
@@ -63,7 +84,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -74,7 +97,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_seconds_sum[5m])\n/\nrate(beacon_block_processing_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_seconds_sum[30s])\n/\nrate(beacon_block_processing_seconds_count[30s])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -124,31 +147,14 @@
     },
     {
       "content": "\n### Read from database\n\n\nCheck that the hash isn't already known in the database, load the block and state for processing.\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
-        "w": 16,
+        "w": 9,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "id": 12,
-      "links": [],
-      "mode": "markdown",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "content": "\n### Committees/Shuffling\n\n\nCheck that the committees cache is build, building if not.\n",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 16,
-        "y": 6
-      },
-      "id": 14,
       "links": [],
       "mode": "markdown",
       "options": {},
@@ -165,11 +171,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 8
+        "y": 10
       },
       "id": 3,
       "legend": {
@@ -185,7 +192,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -196,7 +205,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_db_read_seconds_sum[5m])\n/\nrate(beacon_block_processing_db_read_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_db_read_seconds_sum[1m])\n/\nrate(beacon_block_processing_db_read_seconds_count[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -206,7 +215,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Block Processing DB Read",
+      "title": "Get Parent Block & State",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -250,11 +259,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 8
+        "y": 10
       },
       "id": 4,
       "legend": {
@@ -270,7 +280,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -281,7 +293,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_db_write_seconds_sum[5m])\n/\nrate(beacon_block_processing_db_write_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_db_write_seconds_sum[30s])\n/\nrate(beacon_block_processing_db_write_seconds_count[30s])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -291,7 +303,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Block Processing DB Write",
+      "title": "Write Imported Block & State to DB",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -336,11 +348,12 @@
       "datasource": "Prometheus",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 10
       },
       "id": 5,
       "legend": {
@@ -356,7 +369,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -416,11 +431,12 @@
     },
     {
       "content": "\n### Run per_block_processing\n\n\nThe core `state_processing::per_block_processing` verification/state updating function, as defined in the spec.\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 14,
         "x": 0,
-        "y": 14
+        "y": 16
       },
       "id": 15,
       "links": [],
@@ -434,11 +450,12 @@
     },
     {
       "content": "\n### Tree hash the beacon state\n\n\nGet the merkle root of the state after `state_processing::per_block_processing`\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 16
       },
       "id": 13,
       "links": [],
@@ -458,11 +475,12 @@
       "datasource": "Prometheus",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 16,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 7,
       "legend": {
@@ -478,7 +496,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -489,7 +509,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_core_seconds_sum[5m])\n/\nrate(beacon_block_processing_core_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_core_seconds_sum[1m])\n/\nrate(beacon_block_processing_core_seconds_count[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -544,11 +564,12 @@
       "datasource": "Prometheus",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 16
+        "y": 18
       },
       "id": 8,
       "legend": {
@@ -564,7 +585,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -575,7 +598,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_state_root_seconds_sum[5m])\n/\nrate(beacon_block_processing_state_root_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_state_root_seconds_sum[1m])\n/\nrate(beacon_block_processing_state_root_seconds_count[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -624,11 +647,12 @@
     },
     {
       "content": "\n### Update the fork choice algorithm\n\n\nSubmit the block (and all containied attestation) to the LMD GHOST fork choice algorithm. Does not find the head, just updates the votes.\n",
+      "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 24
       },
       "id": 16,
       "links": [],
@@ -641,14 +665,15 @@
       "type": "text"
     },
     {
-      "content": "\n### Find the new head\n\n\nRun the LMD GHOST `find_head` algorithm and find the new head `BeaconBlock`.",
+      "content": "\n### Checkpoint Cache\n\n\nNot specific to block production, but shows how many times we hit/miss the cache of recently used blocks/states.\n",
+      "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 24
       },
-      "id": 17,
+      "id": 20,
       "links": [],
       "mode": "markdown",
       "options": {},
@@ -666,11 +691,12 @@
       "datasource": "Prometheus",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 27
       },
       "id": 9,
       "legend": {
@@ -686,7 +712,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -697,7 +725,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_fork_choice_register_seconds_sum[5m])\n/\nrate(beacon_block_processing_fork_choice_register_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_fork_choice_register_seconds_sum[1m])\n/\nrate(beacon_block_processing_fork_choice_register_seconds_count[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -752,13 +780,14 @@
       "datasource": "Prometheus",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 11,
+        "h": 5,
+        "w": 6,
         "x": 12,
-        "y": 25
+        "y": 27
       },
-      "id": 6,
+      "id": 18,
       "legend": {
         "avg": false,
         "current": false,
@@ -772,7 +801,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -783,7 +814,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_fork_choice_find_head_seconds_sum[5m])\n/\nrate(beacon_block_processing_fork_choice_find_head_seconds_count[5m])",
+          "expr": "beacon_checkpoint_cache_hits_total",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -793,7 +824,204 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Block Processing Find Head",
+      "title": "Checkpoint Cache Hits",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 27
+      },
+      "id": 19,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "beacon_checkpoint_cache_misses_total",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Checkpoint Cache Misses",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "\n### Per slot processing\n\n\nUsing the `per_slot_processing` function to bring the state of the parent block into the slot of the block being produced.\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 33
+      },
+      "id": 22,
+      "links": [],
+      "mode": "markdown",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Time it takes to bring the parent block state up to the slot of the block being produced",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "id": 21,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_block_processing_catch_up_state_seconds_sum[1m])\n/\nrate(beacon_block_processing_catch_up_state_seconds_count[1m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Catch Up State Time",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -829,17 +1057,170 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "content": "\n### Outlier Analysis\n\nMetrics that show outliers in block processing more effectively than the averaging graphs\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
+      "id": 26,
+      "links": [],
+      "mode": "markdown",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateReds",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "timeseries",
+      "datasource": null,
+      "description": "Frequency of different block processing times, shows outliers more effectively than the averaging view",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 44
+      },
+      "heatmap": {},
+      "hideZeroBuckets": true,
+      "highlightCards": true,
+      "id": 25,
+      "legend": {
+        "show": false
+      },
+      "options": {},
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "expr": "increase(beacon_block_processing_seconds_sum[10s])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Block Processing Time Heatmap",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 2,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": 1,
+        "format": "s",
+        "logBase": 2,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": 2
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": 0.005
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateReds",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "timeseries",
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 44
+      },
+      "heatmap": {},
+      "hideZeroBuckets": true,
+      "highlightCards": true,
+      "id": 27,
+      "legend": {
+        "show": false
+      },
+      "options": {},
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "expr": "increase(beacon_block_processing_db_write_seconds_sum[10s])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "DB Write Times Heatmap",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "tooltipDecimals": 2,
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": 1,
+        "format": "s",
+        "logBase": 2,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": 2
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": 0.005
     }
   ],
-  "refresh": false,
-  "schemaVersion": 18,
+  "refresh": "5s",
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -870,5 +1251,5 @@
   "timezone": "",
   "title": "Block Processing",
   "uid": "tQbhcmOWk",
-  "version": 1
+  "version": 20
 }

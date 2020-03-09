@@ -15,11 +15,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
+  "id": 1,
   "links": [],
   "panels": [
     {
       "content": "\n# Lighthouse Metrics\n\nMetrics collected from a Lighthouse Beacon Node.\n\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 6,
         "w": 9,
@@ -35,90 +36,6 @@
       "title": "",
       "transparent": true,
       "type": "text"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "Prometheus",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 9,
-        "y": 0
-      },
-      "id": 4,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "avg(beacon_head_state_shard_total)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Shard Count",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
     },
     {
       "cacheTimeout": null,
@@ -191,7 +108,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Validator Count",
+      "title": "Avg. Validator Count",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -275,7 +192,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Active Validators",
+      "title": "Avg. Active Validators",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -445,91 +362,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Current Epoch",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "Prometheus",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 9,
-        "y": 3
-      },
-      "id": 27,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "avg(slotclock_slots_per_epoch)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Slots per Epoch",
+      "title": "Avg. Current Epoch",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -613,7 +446,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Slashed Validators",
+      "title": "Avg. Slashed Validators",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -697,7 +530,91 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Withdrawable Validators",
+      "title": "Avg. Withdrawable Validators",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "Prometheus",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 18,
+        "y": 3
+      },
+      "id": 27,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "avg(slotclock_slots_per_epoch)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Slots per Epoch",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -731,7 +648,7 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 18,
+        "x": 21,
         "y": 3
       },
       "id": 13,
@@ -782,7 +699,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Current Slot",
+      "title": "Avg. Current Slot",
       "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -797,6 +714,7 @@
     },
     {
       "content": "\n### Consensus\n\nOverview of consensus between nodes.\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -821,8 +739,9 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 6,
         "w": 8,
         "x": 0,
         "y": 8
@@ -833,7 +752,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": false,
+        "show": true,
         "total": false,
         "values": false
       },
@@ -841,7 +760,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -909,8 +830,9 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 6,
         "w": 9,
         "x": 8,
         "y": 8
@@ -929,7 +851,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -941,7 +865,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_epoch - 1 - beacon_head_state_current_justified_epoch",
+          "expr": "slotclock_present_epoch - beacon_head_state_current_justified_epoch",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -997,8 +921,9 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 6,
         "w": 7,
         "x": 17,
         "y": 8
@@ -1017,7 +942,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1029,7 +956,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_epoch - 1 - beacon_head_state_finalized_epoch",
+          "expr": "slotclock_present_epoch - beacon_head_state_finalized_epoch",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1085,11 +1012,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 4,
-        "w": 8,
+        "w": 4,
         "x": 0,
-        "y": 12
+        "y": 14
       },
       "id": 17,
       "legend": {
@@ -1105,7 +1033,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1173,11 +1103,194 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 4,
-        "w": 9,
-        "x": 8,
-        "y": 12
+        "w": 5,
+        "x": 4,
+        "y": 14
+      },
+      "id": 58,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "beacon_head_state_active_validators_total",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Active Validators",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "none",
+          "label": "Total Validator ETH",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 9,
+        "y": 14
+      },
+      "id": 60,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "beacon_head_state_total_validators_total",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total Validators",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "none",
+          "label": "Total Validator ETH",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 14,
+        "y": 14
       },
       "id": 16,
       "legend": {
@@ -1193,7 +1306,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1260,11 +1375,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 4,
-        "w": 7,
-        "x": 17,
-        "y": 12
+        "w": 5,
+        "x": 19,
+        "y": 14
       },
       "id": 18,
       "legend": {
@@ -1280,11 +1396,13 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
-      "points": true,
+      "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
@@ -1342,11 +1460,12 @@
     },
     {
       "content": "\n### Core BeaconChain Functions\n\nTiming of core `BeaconChain` functions, historical 5-minute averages.\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 51,
       "links": [],
@@ -1366,11 +1485,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 0,
-        "y": 18
+        "y": 20
       },
       "id": 10,
       "legend": {
@@ -1386,7 +1506,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1398,7 +1520,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_processing_seconds_sum[5m])\n/\nrate(beacon_block_processing_seconds_count[5m])",
+          "expr": "rate(beacon_block_processing_seconds_sum[1m])\n/\nrate(beacon_block_processing_seconds_count[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1408,7 +1530,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Block Processing Times (5m avg)",
+      "title": "Block Processing Times (1m avg)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1453,11 +1575,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 6,
-        "y": 18
+        "y": 20
       },
       "id": 9,
       "legend": {
@@ -1473,7 +1596,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1540,11 +1665,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 18
+        "y": 20
       },
       "id": 11,
       "legend": {
@@ -1560,7 +1686,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1572,7 +1700,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_seconds_sum[5m])\n/\nrate(beacon_fork_choice_seconds_count[5m])",
+          "expr": "rate(beacon_fork_choice_seconds_sum[1m])\n/\nrate(beacon_fork_choice_seconds_count[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1582,7 +1710,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Fork Choice Times (5m avg)",
+      "title": "Find & Update Head Routine (1m avg)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1627,11 +1755,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 18
+        "y": 20
       },
       "id": 54,
       "legend": {
@@ -1647,7 +1776,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1669,7 +1800,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Update Head Times (5m avg)",
+      "title": "Update Canonical Head RwLock (5m avg)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1714,11 +1845,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 0,
-        "y": 23
+        "y": 25
       },
       "id": 52,
       "legend": {
@@ -1734,7 +1866,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1796,18 +1930,18 @@
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 6,
-        "y": 23
+        "y": 25
       },
-      "id": 53,
+      "id": 73,
       "legend": {
         "avg": false,
         "current": false,
@@ -1821,9 +1955,10 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
-      "pluginVersion": "6.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1833,7 +1968,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_block_production_seconds_sum[5m])\n/\nrate(beacon_block_production_seconds_count[5m])",
+          "expr": "rate(http_server_validator_attestation_get_request_duration_seconds_sum[5m])\n/\nrate(http_server_validator_attestation_get_request_duration_seconds_count[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1843,7 +1978,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Block Production Times (5m avg)",
+      "title": "HTTP API: GET /validator/attestation",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1889,11 +2024,12 @@
       "datasource": "Prometheus",
       "description": "Time taken to calculate the tree hash root of a BeaconState during block processing.",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 23
+        "y": 25
       },
       "id": 20,
       "legend": {
@@ -1909,7 +2045,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -1977,11 +2115,12 @@
       "datasource": "Prometheus",
       "description": "Time taken to calculate the tree hash root of a BeaconState during block processing.",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 23
+        "y": 25
       },
       "id": 37,
       "legend": {
@@ -1997,7 +2136,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -2058,11 +2199,12 @@
     },
     {
       "content": "\n### Networking (libp2p)\n\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 6,
         "x": 0,
-        "y": 28
+        "y": 30
       },
       "id": 50,
       "links": [],
@@ -2076,11 +2218,12 @@
     },
     {
       "content": "\n### HTTP Server\n\nUsed by Prometheus and the RESTful API.\n\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 6,
         "x": 6,
-        "y": 28
+        "y": 30
       },
       "id": 55,
       "links": [],
@@ -2094,11 +2237,12 @@
     },
     {
       "content": "\n### Database\n\nStats about the on-disk database (LevelDB)\n\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 30
       },
       "id": 56,
       "links": [],
@@ -2118,11 +2262,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 30
+        "y": 32
       },
       "id": 12,
       "legend": {
@@ -2138,7 +2283,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -2207,11 +2354,12 @@
       "datasource": "Prometheus",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 30
+        "y": 32
       },
       "id": 43,
       "legend": {
@@ -2227,7 +2375,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -2294,11 +2444,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 32
       },
       "id": 42,
       "legend": {
@@ -2314,7 +2465,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -2336,7 +2489,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "On-Disk Database Size",
+      "title": "On-Disk Database Size (Hot DB Only)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2381,11 +2534,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 35
+        "y": 37
       },
       "id": 19,
       "legend": {
@@ -2401,7 +2555,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -2413,7 +2569,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(store_disk_db_read_bytes_total [5m])",
+          "expr": "increase(store_disk_db_read_bytes_total [1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2468,11 +2624,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 35
+        "y": 37
       },
       "id": 22,
       "legend": {
@@ -2488,7 +2645,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "6.2.1",
       "pointradius": 2,
@@ -2546,17 +2705,483 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "content": "\n### Logging\n\n\n\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 38
+      },
+      "id": 67,
+      "links": [],
+      "mode": "markdown",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 40
+      },
+      "id": 71,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "crit_total",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Crit Logs Total",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 40
+      },
+      "id": 70,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(error_total[1m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Error Logs per Minute",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Time taken to calculate the tree hash root of a BeaconState during block processing.",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 42
+      },
+      "id": 74,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_persist_chain_sum[1m])\n/\nrate(beacon_persist_chain_count[1m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Persist Beacon Chain Times (1m avg)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 45
+      },
+      "id": 68,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(info_total[1m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Info Logs per Minute",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 45
+      },
+      "id": 69,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(warn_total[1m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Warn Logs per Minute",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 18,
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -2587,5 +3212,5 @@
   "timezone": "",
   "title": "Summary",
   "uid": "yY7PIGdZc",
-  "version": 2
+  "version": 28
 }
