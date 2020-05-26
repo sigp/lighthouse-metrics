@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:4294",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,11 +16,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 4,
   "links": [],
   "panels": [
     {
       "content": "\n# Attestation Processing Metrics\n\nMetrics regarding `BeaconChain::process_attestation`, which processes `Attestation` from the network (but not in blocks).\n\nCollected from the [`beacon_chain`](https://github.com/sigp/lighthouse/tree/master/beacon_node/beacon_chain) crate.\n\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 6,
         "w": 9,
@@ -29,7 +31,6 @@
       "id": 11,
       "links": [],
       "mode": "markdown",
-      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -39,19 +40,20 @@
     {
       "aliasColors": {},
       "bars": false,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "The `BeaconChain::fork_choice` function.",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 15,
-        "x": 9,
+        "w": 14,
+        "x": 10,
         "y": 0
       },
-      "id": 2,
+      "hiddenSeries": false,
+      "id": 41,
       "legend": {
         "avg": false,
         "current": false,
@@ -69,6 +71,7 @@
         "dataLinks": []
       },
       "percentage": false,
+      "pluginVersion": "6.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -78,9 +81,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_attestation_processing_seconds_sum[5m])\n/\nrate(beacon_attestation_processing_seconds_count[5m])",
+          "expr": "beacon_participation_prev_epoch_attester",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -88,13 +93,12 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestation Processing Total Time",
+      "title": "Previous Epoch Attesting Balance",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -105,14 +109,17 @@
       },
       "yaxes": [
         {
-          "format": "s",
-          "label": null,
+          "$$hashKey": "object:230",
+          "decimals": 0,
+          "format": "percentunit",
+          "label": "Percentage of Balance",
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:231",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -127,7 +134,8 @@
       }
     },
     {
-      "content": "\n### Verification Times\n\n\nTimes to verify the attestation contents and signature\n",
+      "content": "\n### Gossip Verification Times\n\n\nTimes to verify the attestation before re-gossiping\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -137,7 +145,6 @@
       "id": 12,
       "links": [],
       "mode": "markdown",
-      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -159,7 +166,8 @@
         "x": 0,
         "y": 8
       },
-      "id": 3,
+      "hiddenSeries": false,
+      "id": 36,
       "legend": {
         "avg": false,
         "current": false,
@@ -186,9 +194,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_attestation_processing_initial_validation_seconds_sum[5m])\n/\nrate(beacon_attestation_processing_initial_validation_seconds_count[5m])",
+          "expr": "rate(beacon_aggregated_attestation_gossip_verification_seconds_sum[5m])\n/\nrate(beacon_aggregated_attestation_gossip_verification_seconds_count[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -196,7 +206,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestation Initial Validation Time",
+      "title": "Aggregated Attn Gossip Verification Times",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -212,6 +222,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:4442",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -220,6 +231,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:4443",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -248,6 +260,7 @@
         "x": 12,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 24,
       "legend": {
         "avg": false,
@@ -275,9 +288,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_attestation_processing_shuffling_cache_wait_seconds_sum[5m])\n/\nrate(beacon_attestation_processing_shuffling_cache_wait_seconds_count[5m])",
+          "expr": "rate(beacon_unaggregated_attestation_gossip_verification_seconds_sum[5m])\n/\nrate(beacon_unaggregated_attestation_gossip_verification_seconds_count[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -285,7 +300,117 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestation Shuffling Cache Wait Times",
+      "title": "Unaggregated Attn Gossip Verification Times",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "\n### Storing Attestation\n\nTimes to store the attestation in fork choice or pools.\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 43,
+      "links": [],
+      "mode": "markdown",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 42,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_attestation_processing_apply_to_fork_choice_sum[5m])\n/\nrate(beacon_attestation_processing_apply_to_fork_choice_count[5m])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Apply Attestation to Fork Choice",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -333,11 +458,308 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 12,
-        "x": 0,
-        "y": 14
+        "w": 8,
+        "x": 8,
+        "y": 16
       },
+      "hiddenSeries": false,
+      "id": 44,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_attestation_processing_apply_to_agg_pool_sum[5m])\n/\nrate(beacon_attestation_processing_apply_to_agg_pool_count[5m])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Apply Aggregate to Aggregation Pool",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:6569",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:6570",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 45,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_attestation_processing_apply_to_op_pool_sum[5m])\n/\nrate(beacon_attestation_processing_apply_to_op_pool_count[5m])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Apply Aggregate to Op Pool",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:6569",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:6570",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "\n### Component Verification Times\n\n\nTimes to verify specific components of attestations\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 35,
+      "links": [],
+      "mode": "markdown",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
       "id": 22,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_attestation_processing_signature_setup_seconds_sum[5m])\n/\nrate(beacon_attestation_processing_signature_setup_seconds_count[5m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Attestation Signature Verification Setup Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 34,
       "legend": {
         "avg": false,
         "current": false,
@@ -422,10 +844,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 12,
+        "w": 6,
         "x": 12,
-        "y": 14
+        "y": 24
       },
+      "hiddenSeries": false,
       "id": 25,
       "legend": {
         "avg": false,
@@ -501,24 +924,6 @@
       }
     },
     {
-      "content": "\n### State Processing Times\n\n\nTimes to read and process the state when the shuffling cache misses.\n",
-      "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 20
-      },
-      "id": 32,
-      "links": [],
-      "mode": "markdown",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -528,12 +933,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 0,
-        "y": 22
+        "h": 11,
+        "w": 6,
+        "x": 18,
+        "y": 24
       },
-      "id": 23,
+      "hiddenSeries": false,
+      "id": 46,
       "legend": {
         "avg": false,
         "current": false,
@@ -560,9 +966,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_attestation_processing_state_read_seconds_sum[5m])\n/\nrate(beacon_attestation_processing_state_read_seconds_count[5m])",
+          "expr": "rate(beacon_attestation_processing_agg_pool_aggregation_sum[5m])\n/\nrate(beacon_attestation_processing_agg_pool_aggregation_count[5m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -570,7 +978,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestation State Read Time",
+      "title": "Agg. Pool Signature Aggregation Time",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -586,6 +994,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:6817",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -594,6 +1003,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:6818",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -617,11 +1027,12 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 22
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 30
       },
+      "hiddenSeries": false,
       "id": 30,
       "legend": {
         "avg": false,
@@ -706,11 +1117,102 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 22
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 30
       },
+      "hiddenSeries": false,
+      "id": 23,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(beacon_attestation_processing_state_read_seconds_sum[5m])\n/\nrate(beacon_attestation_processing_state_read_seconds_count[5m])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Attestation State Read Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 30
+      },
+      "hiddenSeries": false,
       "id": 29,
       "legend": {
         "avg": false,
@@ -787,16 +1289,16 @@
     },
     {
       "content": "\n### Cache Hits/Misses\n\n\nRates of success/failure when trying the shuffling cache.\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 35
       },
       "id": 33,
       "links": [],
       "mode": "markdown",
-      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -816,8 +1318,9 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 37
       },
+      "hiddenSeries": false,
       "id": 26,
       "legend": {
         "avg": false,
@@ -905,8 +1408,9 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 37
       },
+      "hiddenSeries": false,
       "id": 27,
       "legend": {
         "avg": false,
@@ -983,16 +1487,16 @@
     },
     {
       "content": "\n### Requests and Successes\n\n\nTracks the number of attestation processing requests and successes\n",
+      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 43
       },
       "id": 18,
       "links": [],
       "mode": "markdown",
-      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1008,11 +1512,103 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
+        "h": 5,
+        "w": 12,
         "x": 0,
-        "y": 38
+        "y": 45
       },
+      "hiddenSeries": false,
+      "id": 38,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(beacon_aggregated_attestation_processing_requests_total[1m])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Aggregated Attn. Processed per Minute",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "Attestations",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 45
+      },
+      "hiddenSeries": false,
       "id": 17,
       "legend": {
         "avg": false,
@@ -1040,9 +1636,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(beacon_attestation_processing_requests_total[1m])",
+          "expr": "increase(beacon_unaggregated_attestation_processing_requests_total[1m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -1050,7 +1648,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestations Processed per Minute",
+      "title": "Unaggregated Attn. Processed per Minute",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1096,12 +1694,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 38
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 50
       },
-      "id": 21,
+      "hiddenSeries": false,
+      "id": 39,
       "legend": {
         "avg": false,
         "current": false,
@@ -1128,9 +1727,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(beacon_attestation_processing_successes_total[1m])",
+          "expr": "beacon_aggregated_attestation_processing_successes_total / beacon_aggregated_attestation_processing_requests_total",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -1138,7 +1739,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestations Successfully Imported per Minute",
+      "title": "Aggregated Attn. Success Rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1154,7 +1755,8 @@
       },
       "yaxes": [
         {
-          "format": "none",
+          "$$hashKey": "object:4533",
+          "format": "percentunit",
           "label": "Attestations",
           "logBase": 1,
           "max": null,
@@ -1162,6 +1764,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:4534",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1184,12 +1787,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 38
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 50
       },
-      "id": 28,
+      "hiddenSeries": false,
+      "id": 37,
       "legend": {
         "avg": false,
         "current": false,
@@ -1216,9 +1820,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_attestation_processing_requests_total - beacon_attestation_processing_successes_total",
+          "expr": "beacon_unaggregated_attestation_processing_successes_total / beacon_unaggregated_attestation_processing_requests_total",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -1226,7 +1832,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Attestations Rejected Total",
+      "title": "Unaggregated Attn. Success Rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1242,7 +1848,8 @@
       },
       "yaxes": [
         {
-          "format": "none",
+          "$$hashKey": "object:4533",
+          "format": "percentunit",
           "label": "Attestations",
           "logBase": 1,
           "max": null,
@@ -1250,6 +1857,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:4534",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1265,7 +1873,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 19,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1303,5 +1911,8 @@
   "timezone": "",
   "title": "Attestation Processing",
   "uid": "tQbhcDOGWk",
-  "version": 11
+  "variables": {
+    "list": []
+  },
+  "version": 6
 }
