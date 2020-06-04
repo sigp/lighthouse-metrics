@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:7",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -21,7 +20,6 @@
   "panels": [
     {
       "content": "\n# Lighthouse Metrics\n\nMetrics collected from a Lighthouse Beacon Node.\n\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 6,
         "w": 9,
@@ -31,6 +29,7 @@
       "id": 46,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -78,6 +77,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -161,6 +161,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -245,6 +246,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -328,6 +330,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "pluginVersion": "6.2.1",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -412,6 +415,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -495,6 +499,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -578,6 +583,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -661,6 +667,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "pluginVersion": "6.2.1",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -706,7 +713,6 @@
     },
     {
       "content": "\n### Consensus\n\nOverview of consensus between nodes.\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -716,6 +722,7 @@
       "id": 49,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1072,7 +1079,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:230",
           "decimals": 0,
           "format": "percentunit",
           "label": "Percentage of Balance",
@@ -1082,7 +1088,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:231",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1168,7 +1173,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:230",
           "decimals": 0,
           "format": "percentunit",
           "label": "Percentage of Balance",
@@ -1178,7 +1182,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:231",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1264,7 +1267,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:230",
           "decimals": 0,
           "format": "percentunit",
           "label": "Percentage of Balance",
@@ -1274,7 +1276,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:231",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1361,7 +1362,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:230",
           "decimals": 0,
           "format": "none",
           "label": "# of Validators",
@@ -1371,7 +1371,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:231",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1458,7 +1457,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:230",
           "decimals": 0,
           "format": "none",
           "label": "# of Validators",
@@ -1468,7 +1466,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:231",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1943,7 +1940,6 @@
     },
     {
       "content": "\n### Logging\n\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -1953,6 +1949,7 @@
       "id": 67,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2120,7 +2117,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:626",
           "format": "none",
           "label": null,
           "logBase": 1,
@@ -2129,7 +2125,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:627",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2325,7 +2320,6 @@
     },
     {
       "content": "\n### Core BeaconChain Functions\n\nTiming of core `BeaconChain` functions and syncing.\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -2335,6 +2329,7 @@
       "id": 51,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3072,7 +3067,6 @@
     },
     {
       "content": "\n### Networking (libp2p)\n\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 6,
@@ -3082,6 +3076,7 @@
       "id": 50,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3090,7 +3085,6 @@
     },
     {
       "content": "\n### HTTP Server\n\nUsed by Prometheus and the RESTful API.\n\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 6,
@@ -3100,6 +3094,7 @@
       "id": 55,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3108,7 +3103,6 @@
     },
     {
       "content": "\n### Database\n\nStats about the on-disk database (LevelDB)\n\n\n\n",
-      "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 12,
@@ -3118,6 +3112,7 @@
       "id": 56,
       "links": [],
       "mode": "markdown",
+      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3582,6 +3577,115 @@
       }
     },
     {
+      "columns": [
+        {
+          "text": "Current",
+          "value": "current"
+        }
+      ],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 56
+      },
+      "id": 83,
+      "options": {},
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Task name",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Metric",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "timer",
+              "value": "async_tasks_count{async_task_count=\"timer\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "sync",
+              "value": "async_tasks_count{async_task_count=\"sync\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "router",
+              "value": "async_tasks_count{async_task_count=\"router\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "notifier",
+              "value": "async_tasks_count{async_task_count=\"notifier\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "network",
+              "value": "async_tasks_count{async_task_count=\"network\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "libp2p",
+              "value": "async_tasks_count{async_task_count=\"libp2p\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "http",
+              "value": "async_tasks_count{async_task_count=\"http\",instance=\"localhost:5052\",job=\"nodes\"}"
+            },
+            {
+              "text": "eth1",
+              "value": "async_tasks_count{async_task_count=\"eth1\",instance=\"localhost:5052\",job=\"nodes\"}"
+            }
+          ]
+        },
+        {
+          "alias": "Task count",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Current",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "async_tasks_count",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Async tasks count",
+      "transform": "timeseries_aggregations",
+      "type": "table"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "cacheTimeout": null,
@@ -3675,7 +3779,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 22,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3713,8 +3817,5 @@
   "timezone": "",
   "title": "Summary",
   "uid": "yY7PIGdZd",
-  "variables": {
-    "list": []
-  },
-  "version": 3
+  "version": 6
 }
