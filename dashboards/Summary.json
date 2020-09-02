@@ -26,7 +26,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "7.1.1"
+      "version": "7.0.3"
     },
     {
       "type": "panel",
@@ -56,7 +56,7 @@
       "type": "panel",
       "id": "text",
       "name": "Text",
-      "version": "7.1.0"
+      "version": ""
     }
   ],
   "annotations": {
@@ -677,6 +677,9 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -771,6 +774,9 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -865,6 +871,9 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -990,6 +999,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1085,6 +1097,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1182,6 +1197,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1277,6 +1295,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1374,6 +1395,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1471,6 +1495,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1569,6 +1596,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1667,6 +1697,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1764,6 +1797,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1859,6 +1895,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -1954,6 +1993,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -2049,6 +2091,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -2143,6 +2188,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -2269,6 +2317,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -2372,7 +2423,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "libp2p_peers_per_client",
@@ -2422,6 +2473,9 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -2523,7 +2577,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "gossipsub_peers_per_protocol",
@@ -2586,7 +2640,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "discovery_sessions",
@@ -2646,7 +2700,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "discovery_queue_size",
@@ -2706,7 +2760,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "discovery_reqs_per_ip",
@@ -2723,6 +2777,7 @@
       "type": "bargauge"
     },
     {
+      "content": "\n### Gossipsub Metrics\n\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -2737,6 +2792,7 @@
         "y": 54
       },
       "id": 109,
+      "mode": "markdown",
       "options": {
         "content": "### Gossipsub Metrics",
         "mode": "markdown"
@@ -2791,7 +2847,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "gossipsub_mesh_peers_per_main_topic",
@@ -2847,7 +2903,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "gossipsub_avg_peer_score_per_topic",
@@ -2907,7 +2963,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.1.1",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "expr": "gossipsub_mesh_peers_per_subnet_topic",
@@ -2987,6 +3043,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3085,6 +3144,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3179,6 +3241,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3273,6 +3338,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4392,7 +4460,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 26,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -4429,5 +4497,5 @@
   "timezone": "",
   "title": "Summary",
   "uid": "yY7PIGdZd",
-  "version": 9
+  "version": 2
 }
