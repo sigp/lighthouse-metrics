@@ -4,7 +4,7 @@
       "job": "nodes"
     },
     "targets": [
-      "localhost:5052"
+      "localhost:5054"
     ]
   }
 ]
