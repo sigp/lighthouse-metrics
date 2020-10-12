@@ -8,8 +8,8 @@ nodes using Prometheus and presents them in a browser-based Grafana GUI.
 
 ## Usage
 
-1. Start a lighthouse node with `$ lighthouse beacon --http`
-    - The `--http` flag is required for metrics.
+1. Start a lighthouse node with `$ lighthouse beacon --metrics`
+    - The `--metrics` flag is required for metrics.
 1. Bring the environment up with `$ docker-compose up`.
 1. Ensure that Prometheus can access your Lighthouse node by ensuring it is in
    the `UP` state at [http://localhost:9090/targets](http://localhost:9090/targets).
