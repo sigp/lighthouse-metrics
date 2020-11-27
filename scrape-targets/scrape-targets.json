@@ -4,7 +4,8 @@
       "job": "nodes"
     },
     "targets": [
-      "localhost:5054"
+      "localhost:5054",
+      "localhost:5064"
     ]
   }
 ]
