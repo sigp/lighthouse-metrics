@@ -2715,6 +2715,289 @@
       "type": "gauge"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 49
+      },
+      "hiddenSeries": false,
+      "id": 118,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(libp2p_total_bandwidth[1m])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Libp2p Total Bandwidth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 49
+      },
+      "hiddenSeries": false,
+      "id": 120,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(libp2p_inbound_bytes[1m])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Libp2p Inbound Bandwidth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 49
+      },
+      "hiddenSeries": false,
+      "id": 122,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(libp2p_outbound_bytes[1m])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Libp2p Outbound Bandwidth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "datasource": "${DS_PROMETHEUS}",
       "description": "The peers requesting routing information from us. Requests per second",
       "fieldConfig": {
@@ -2745,7 +3028,7 @@
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 57
       },
       "id": 93,
       "options": {
@@ -2789,7 +3072,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 54
+        "y": 62
       },
       "id": 109,
       "mode": "markdown",
@@ -2832,7 +3115,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 56
+        "y": 64
       },
       "id": 111,
       "options": {
@@ -2888,7 +3171,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 56
+        "y": 64
       },
       "id": 114,
       "options": {
@@ -2948,7 +3231,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 72
       },
       "id": 110,
       "options": {
@@ -2991,7 +3274,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 79
       },
       "id": 67,
       "links": [],
@@ -3026,7 +3309,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 73
+        "y": 81
       },
       "hiddenSeries": false,
       "id": 71,
@@ -3125,7 +3408,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 73
+        "y": 81
       },
       "hiddenSeries": false,
       "id": 70,
@@ -3224,7 +3507,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 73
+        "y": 81
       },
       "hiddenSeries": false,
       "id": 69,
@@ -3321,7 +3604,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 73
+        "y": 81
       },
       "hiddenSeries": false,
       "id": 68,
@@ -3412,7 +3695,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 79
+        "y": 87
       },
       "id": 51,
       "links": [],
@@ -3447,7 +3730,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 81
+        "y": 89
       },
       "hiddenSeries": false,
       "id": 10,
@@ -3464,6 +3747,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3544,7 +3830,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 81
+        "y": 89
       },
       "hiddenSeries": false,
       "id": 11,
@@ -3561,6 +3847,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3638,7 +3927,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 81
+        "y": 89
       },
       "hiddenSeries": false,
       "id": 54,
@@ -3655,6 +3944,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3733,7 +4025,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 86
+        "y": 94
       },
       "hiddenSeries": false,
       "id": 37,
@@ -3750,6 +4042,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3828,7 +4123,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 86
+        "y": 94
       },
       "hiddenSeries": false,
       "id": 20,
@@ -3845,6 +4140,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3916,7 +4214,7 @@
         "h": 2,
         "w": 6,
         "x": 0,
-        "y": 91
+        "y": 99
       },
       "id": 50,
       "links": [],
@@ -3945,7 +4243,7 @@
         "h": 2,
         "w": 12,
         "x": 12,
-        "y": 91
+        "y": 99
       },
       "id": 56,
       "links": [],
@@ -3981,7 +4279,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 93
+        "y": 101
       },
       "id": 83,
       "pageSize": null,
@@ -4100,7 +4398,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 93
+        "y": 101
       },
       "hiddenSeries": false,
       "id": 42,
@@ -4117,6 +4415,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4194,7 +4495,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 98
+        "y": 106
       },
       "hiddenSeries": false,
       "id": 19,
@@ -4211,6 +4512,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4288,7 +4592,7 @@
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 98
+        "y": 106
       },
       "hiddenSeries": false,
       "id": 22,
@@ -4305,6 +4609,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4383,7 +4690,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 103
+        "y": 111
       },
       "hiddenSeries": false,
       "id": 74,
@@ -4400,6 +4707,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4467,7 +4777,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -4497,5 +4807,5 @@
   "timezone": "",
   "title": "Summary",
   "uid": "yY7PIGdZd",
-  "version": 2
+  "version": 4
 }
