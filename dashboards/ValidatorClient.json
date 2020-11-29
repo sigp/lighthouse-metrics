@@ -644,7 +644,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_genesis_distance_seconds",
+          "expr": "vc_genesis_distance_seconds * -1",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
