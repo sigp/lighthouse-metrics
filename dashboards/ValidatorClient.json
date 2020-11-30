@@ -35,7 +35,7 @@
       "id": 46,
       "links": [],
       "options": {
-        "content": "\n# Lighthouse Metrics\n\nMetrics collected from a Lighthouse Beacon Node.\n\n\n\n",
+        "content": "\n# Lighthouse Metrics\n\nMetrics collected from a Lighthouse Validator Client.\n\n\n\n",
         "mode": "markdown"
       },
       "pluginVersion": "7.3.4",
