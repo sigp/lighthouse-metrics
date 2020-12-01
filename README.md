@@ -24,11 +24,7 @@ nodes using Prometheus and presents them in a browser-based Grafana GUI.
 
 By default Prometheus and Grafana will only bind to localhost (127.0.0.1), in
 order to protect you from accidentally exposing them to the public internet. If
-you would like to change this you can use the provided `public.env` file:
-
-```
-docker-compose --env-file public.env up --build
-```
+you would like to change this you must edit the `http_addr` in `grafana.ini`.
 
 ## Maintenance and Contributing
 
