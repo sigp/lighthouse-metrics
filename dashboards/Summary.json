@@ -13,7 +13,7 @@
     {
       "type": "panel",
       "id": "bargauge",
-      "name": "Bar gauge",
+      "name": "Bar Gauge",
       "version": ""
     },
     {
@@ -26,7 +26,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "7.0.3"
+      "version": "6.4.3"
     },
     {
       "type": "panel",
@@ -44,12 +44,6 @@
       "type": "panel",
       "id": "singlestat",
       "name": "Singlestat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table-old",
-      "name": "Table (old)",
       "version": ""
     },
     {
@@ -154,6 +148,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -243,6 +238,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -332,6 +328,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "pluginVersion": "6.2.1",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -422,6 +419,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -511,6 +509,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -600,6 +599,7 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
+      "options": {},
       "pluginVersion": "6.2.1",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -717,7 +717,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:509",
           "format": "percentunit",
           "label": null,
           "logBase": 1,
@@ -726,7 +725,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:510",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -814,7 +812,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:509",
           "format": "decbytes",
           "label": null,
           "logBase": 1,
@@ -823,7 +820,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:510",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -911,7 +907,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:509",
           "format": "decbytes",
           "label": null,
           "logBase": 1,
@@ -920,7 +915,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:510",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2413,6 +2407,28 @@
       "id": 104,
       "options": {
         "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -2423,7 +2439,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "6.4.3",
       "targets": [
         {
           "expr": "libp2p_peers_per_client",
@@ -2454,8 +2470,8 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 6,
+        "h": 7,
+        "w": 10,
         "x": 0,
         "y": 43
       },
@@ -2535,112 +2551,45 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 10,
-        "x": 6,
-        "y": 43
-      },
-      "id": 116,
-      "options": {
-        "displayMode": "gradient",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "gossipsub_peers_per_protocol",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{protocol}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Goosipsub Peers by Protocol",
-      "type": "bargauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "max": 1000,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 500
-              },
-              {
-                "color": "red",
-                "value": 800
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 4,
-        "x": 16,
+        "x": 10,
         "y": 43
       },
       "id": 91,
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "7.0.3",
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "expr": "discovery_sessions",
@@ -2649,10 +2598,46 @@
           "refId": "A"
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Active Discv5 Sessions",
-      "type": "gauge"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "datasource": "${DS_PROMETHEUS}",
@@ -2682,13 +2667,35 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 4,
         "x": 20,
         "y": 43
       },
       "id": 85,
       "options": {
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -2700,7 +2707,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "6.4.3",
       "targets": [
         {
           "expr": "discovery_queue_size",
@@ -2715,66 +2722,265 @@
       "type": "gauge"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
-      "description": "The peers requesting routing information from us. Requests per second",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 0.8
-              },
-              {
-                "color": "red",
-                "value": 2
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 5,
-        "w": 24,
+        "h": 8,
+        "w": 8,
         "x": 0,
-        "y": 49
+        "y": 50
       },
-      "id": 93,
+      "id": 116,
+      "interval": "",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
       "options": {
-        "displayMode": "gradient",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true
+        "dataLinks": []
       },
-      "pluginVersion": "7.0.3",
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
-          "expr": "discovery_reqs_per_ip",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{Addresses}}",
+          "expr": "rate(libp2p_total_bandwidth[1m])",
+          "legendFormat": "bytes/s",
           "refId": "A"
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Unsolicited Requests/s",
-      "transparent": true,
-      "type": "bargauge"
+      "title": "Total Libp2p Bandwidth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 50
+      },
+      "id": 118,
+      "interval": "",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(libp2p_inbound_bytes[1m])",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Libp2p Inbound Bandwidth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 50
+      },
+      "id": 120,
+      "interval": "",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(libp2p_outbound_bytes[1m])",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Libp2p Outbound Bandwidth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "content": "\n### Gossipsub Metrics\n\n",
@@ -2789,7 +2995,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 54
+        "y": 58
       },
       "id": 109,
       "mode": "markdown",
@@ -2832,11 +3038,33 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 56
+        "y": 60
       },
       "id": 111,
       "options": {
         "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -2847,7 +3075,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "6.4.3",
       "targets": [
         {
           "expr": "gossipsub_mesh_peers_per_main_topic",
@@ -2888,11 +3116,33 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 56
+        "y": 60
       },
       "id": 114,
       "options": {
         "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -2903,7 +3153,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "6.4.3",
       "targets": [
         {
           "expr": "gossipsub_avg_peer_score_per_topic",
@@ -2948,11 +3198,33 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 68
       },
       "id": 110,
       "options": {
         "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
         "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
@@ -2963,7 +3235,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "6.4.3",
       "targets": [
         {
           "expr": "gossipsub_mesh_peers_per_subnet_topic",
@@ -2991,7 +3263,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 75
       },
       "id": 67,
       "links": [],
@@ -3026,7 +3298,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 73
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 71,
@@ -3125,7 +3397,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 73
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 70,
@@ -3224,7 +3496,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 73
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 69,
@@ -3321,7 +3593,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 73
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 68,
@@ -3412,7 +3684,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 79
+        "y": 83
       },
       "id": 51,
       "links": [],
@@ -3447,7 +3719,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 81
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 10,
@@ -3464,6 +3736,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3544,7 +3819,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 81
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 11,
@@ -3561,6 +3836,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3638,7 +3916,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 81
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 54,
@@ -3655,6 +3933,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3733,7 +4014,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 86
+        "y": 90
       },
       "hiddenSeries": false,
       "id": 37,
@@ -3750,6 +4031,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3828,7 +4112,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 86
+        "y": 90
       },
       "hiddenSeries": false,
       "id": 20,
@@ -3845,6 +4129,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -3904,35 +4191,6 @@
       }
     },
     {
-      "content": "\n### Task Manager\nActive long standing threads\n\n\n\n",
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 6,
-        "x": 0,
-        "y": 91
-      },
-      "id": 50,
-      "links": [],
-      "mode": "markdown",
-      "options": {
-        "content": "\n### Task Manager\nActive long standing threads\n\n\n\n",
-        "mode": "markdown"
-      },
-      "pluginVersion": "7.1.0",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "content": "\n### Database\n\nStats about the on-disk database (LevelDB)\n\n\n\n",
       "datasource": null,
       "fieldConfig": {
@@ -3943,9 +4201,9 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 12,
-        "x": 12,
-        "y": 91
+        "w": 24,
+        "x": 0,
+        "y": 95
       },
       "id": 56,
       "links": [],
@@ -3960,126 +4218,6 @@
       "title": "",
       "transparent": true,
       "type": "text"
-    },
-    {
-      "columns": [
-        {
-          "$$hashKey": "object:1425",
-          "text": "Current",
-          "value": "current"
-        }
-      ],
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 0,
-        "y": 93
-      },
-      "id": 83,
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "Task name",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Metric",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short",
-          "valueMaps": [
-            {
-              "text": "timer",
-              "value": "async_tasks_count{async_task_count=\"timer\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "sync",
-              "value": "async_tasks_count{async_task_count=\"sync\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "router",
-              "value": "async_tasks_count{async_task_count=\"router\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "notifier",
-              "value": "async_tasks_count{async_task_count=\"notifier\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "network",
-              "value": "async_tasks_count{async_task_count=\"network\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "libp2p",
-              "value": "async_tasks_count{async_task_count=\"libp2p\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "http",
-              "value": "async_tasks_count{async_task_count=\"http\",instance=\"localhost:5052\",job=\"nodes\"}"
-            },
-            {
-              "text": "eth1",
-              "value": "async_tasks_count{async_task_count=\"eth1\",instance=\"localhost:5052\",job=\"nodes\"}"
-            }
-          ]
-        },
-        {
-          "alias": "Task count",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Current",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "expr": "async_tasks_count",
-          "interval": "",
-          "legendFormat": "{{async_task_count}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Async tasks count",
-      "transform": "timeseries_aggregations",
-      "type": "table-old"
     },
     {
       "aliasColors": {},
@@ -4099,8 +4237,8 @@
       "gridPos": {
         "h": 5,
         "w": 12,
-        "x": 12,
-        "y": 93
+        "x": 0,
+        "y": 97
       },
       "hiddenSeries": false,
       "id": 42,
@@ -4117,6 +4255,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4194,7 +4335,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 98
+        "y": 97
       },
       "hiddenSeries": false,
       "id": 19,
@@ -4211,6 +4352,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4288,7 +4432,7 @@
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 98
+        "y": 97
       },
       "hiddenSeries": false,
       "id": 22,
@@ -4305,6 +4449,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4382,8 +4529,8 @@
       "gridPos": {
         "h": 5,
         "w": 6,
-        "x": 12,
-        "y": 103
+        "x": 0,
+        "y": 102
       },
       "hiddenSeries": false,
       "id": 74,
@@ -4400,6 +4547,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pluginVersion": "7.1.1",
       "pointradius": 2,
@@ -4460,14 +4610,14 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 25,
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
