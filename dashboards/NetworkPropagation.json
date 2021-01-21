@@ -1,14 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
   "__requires": [
     {
       "type": "grafana",
@@ -99,7 +89,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -157,7 +147,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "avg(beacon_head_state_active_validators_total)",
+          "expr": "avg(beacon_head_state_active_validators_total{instance=\"$instance\",job=\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -188,7 +178,7 @@
         "#1F60C4",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -247,7 +237,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(slotclock_present_slot)",
+          "expr": "max(slotclock_present_slot{instance=\"$instance\",job=\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -278,7 +268,7 @@
         "#1F60C4",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -337,7 +327,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(slotclock_present_epoch)",
+          "expr": "max(slotclock_present_epoch{instance=\"$instance\",job=\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -394,7 +384,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -435,7 +425,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_slot - beacon_head_state_slot",
+          "expr": "slotclock_present_slot{instance=\"$instance\",job=\"$job\"} - beacon_head_state_slot{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -489,7 +479,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -530,7 +520,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_epoch - beacon_head_state_current_justified_epoch",
+          "expr": "slotclock_present_epoch{instance=\"$instance\",job=\"$job\"} - beacon_head_state_current_justified_epoch{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -586,7 +576,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -627,7 +617,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slotclock_present_epoch - beacon_head_state_finalized_epoch",
+          "expr": "slotclock_present_epoch{instance=\"$instance\",job=\"$job\"} - beacon_head_state_finalized_epoch{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -683,7 +673,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -724,7 +714,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_participation_prev_epoch_attester",
+          "expr": "beacon_participation_prev_epoch_attester{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -782,7 +772,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -823,7 +813,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_participation_prev_epoch_target_attester",
+          "expr": "beacon_participation_prev_epoch_target_attester{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -881,7 +871,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -922,7 +912,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_participation_prev_epoch_head_attester",
+          "expr": "beacon_participation_prev_epoch_head_attester{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1009,7 +999,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "The number of attesters for which we have seen an attestation. That attestation is not necessarily included in the chain.",
       "fieldConfig": {
         "defaults": {
@@ -1051,7 +1041,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_attn_observation_epoch_attesters",
+          "expr": "beacon_attn_observation_epoch_attesters{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1109,7 +1099,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "The number of aggregators for which we have seen an attestation. That attestation is not necessarily included in the chain.",
       "fieldConfig": {
         "defaults": {
@@ -1151,7 +1141,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_attn_observation_epoch_aggregators",
+          "expr": "beacon_attn_observation_epoch_aggregators{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1238,7 +1228,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1280,7 +1270,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_blocks_rx_total[5m])",
+          "expr": "increase(gossipsub_blocks_rx_total{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1338,7 +1328,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1380,7 +1370,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_aggregated_attestations_rx_total[1m])",
+          "expr": "increase(gossipsub_aggregated_attestations_rx_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1438,7 +1428,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1480,7 +1470,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_unaggregated_attestations_rx_total[1m])",
+          "expr": "increase(gossipsub_unaggregated_attestations_rx_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1538,7 +1528,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1580,7 +1570,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_unaggregated_attestations_ignored_total[1m])",
+          "expr": "increase(gossipsub_unaggregated_attestations_ignored_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1638,7 +1628,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1680,7 +1670,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "1 - (increase(gossipsub_unaggregated_attestations_ignored_total[1m]) / increase(gossipsub_unaggregated_attestations_rx_total[1m]))",
+          "expr": "1 - (increase(gossipsub_unaggregated_attestations_ignored_total{instance=\"$instance\",job=\"$job\"}[1m]) / increase(gossipsub_unaggregated_attestations_rx_total{instance=\"$instance\",job=\"$job\"}[1m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1767,7 +1757,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1809,7 +1799,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_subnet_subscriptions_total[1m])",
+          "expr": "increase(gossipsub_subnet_subscriptions_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1867,7 +1857,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1909,7 +1899,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_subnet_subscriptions_aggregator_total[1m])",
+          "expr": "increase(gossipsub_subnet_subscriptions_aggregator_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1996,7 +1986,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2038,7 +2028,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_blocks_tx_total[5m])",
+          "expr": "increase(gossipsub_blocks_tx_total{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2096,7 +2086,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2138,7 +2128,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_unaggregated_attestations_tx_total[1m])",
+          "expr": "increase(gossipsub_unaggregated_attestations_tx_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2196,7 +2186,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2238,7 +2228,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(gossipsub_aggregated_attestations_rx_total[1m])",
+          "expr": "increase(gossipsub_aggregated_attestations_rx_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2324,7 +2314,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2366,7 +2356,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "crit_total",
+          "expr": "crit_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2418,7 +2408,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2462,7 +2452,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(error_total[1m])",
+          "expr": "rate(error_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2516,7 +2506,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2558,7 +2548,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(warn_total[1m])",
+          "expr": "rate(warn_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2610,7 +2600,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2652,7 +2642,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(info_total[1m])",
+          "expr": "rate(info_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2763,7 +2753,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -2804,7 +2794,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "libp2p_peer_connected_peers_total",
+          "expr": "libp2p_peer_connected_peers_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2858,7 +2848,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -2899,7 +2889,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sync_slots_per_second",
+          "expr": "sync_slots_per_second{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2952,7 +2942,54 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "index": -1,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": "label_values(validator_monitor_active, job)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-30m",

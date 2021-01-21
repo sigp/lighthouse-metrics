@@ -79,7 +79,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_seconds_sum[5m])\n/\nrate(beacon_fork_choice_seconds_count[5m])",
+          "expr": "rate(beacon_fork_choice_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(beacon_fork_choice_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -206,7 +206,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_find_head_seconds_sum[5m])\n/\nrate(beacon_fork_choice_find_head_seconds_count[5m])",
+          "expr": "rate(beacon_fork_choice_find_head_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(beacon_fork_choice_find_head_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -294,7 +294,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(beacon_fork_choice_requests_total [1m])",
+          "expr": "increase(beacon_fork_choice_requests_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -401,7 +401,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(beacon_fork_choice_changed_head_total [1m])",
+          "expr": "increase(beacon_fork_choice_changed_head_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -489,7 +489,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_process_block_seconds_sum[5m])\n/\nrate(beacon_fork_choice_process_block_seconds_count[5m])",
+          "expr": "rate(beacon_fork_choice_process_block_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(beacon_fork_choice_process_block_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -577,7 +577,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(beacon_fork_choice_reorg_total [1m])",
+          "expr": "increase(beacon_fork_choice_reorg_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -684,7 +684,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_process_attestation_seconds_sum[5m])\n/\nrate(beacon_fork_choice_process_attestation_seconds_count[5m])",
+          "expr": "rate(beacon_fork_choice_process_attestation_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(beacon_fork_choice_process_attestation_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -791,7 +791,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(beacon_fork_choice_requests_total [1m]) / increase(beacon_fork_choice_changed_head_total [1m])",
+          "expr": "increase(beacon_fork_choice_requests_total{instance=\"$instance\",job=\"$job\"}[1m]) / increase(beacon_fork_choice_changed_head_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -880,7 +880,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_balances_cache_hits_total",
+          "expr": "beacon_balances_cache_hits_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -969,7 +969,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "beacon_balances_cache_misses_total",
+          "expr": "beacon_balances_cache_misses_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1076,7 +1076,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_database_read_seconds_sum[1m])\n/\nrate(beacon_fork_choice_database_read_seconds_count[1m])",
+          "expr": "rate(beacon_fork_choice_database_read_seconds_sum{instance=\"$instance\",job=\"$job\"}[1m])\n/\nrate(beacon_fork_choice_database_read_seconds_count{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1164,7 +1164,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_inspect_new_head_seconds_sum[1m])\n/\nrate(beacon_fork_choice_inspect_new_head_seconds_count[1m])",
+          "expr": "rate(beacon_fork_choice_inspect_new_head_seconds_sum{instance=\"$instance\",job=\"$job\"}[1m])\n/\nrate(beacon_fork_choice_inspect_new_head_seconds_count{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1252,7 +1252,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_fork_choice_prepare_new_head_seconds_sum[1m])\n/\nrate(beacon_fork_choice_prepare_new_head_seconds_count[1m])",
+          "expr": "rate(beacon_fork_choice_prepare_new_head_seconds_sum{instance=\"$instance\",job=\"$job\"}[1m])\n/\nrate(beacon_fork_choice_prepare_new_head_seconds_count{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1340,7 +1340,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_update_head_seconds_sum[1m])\n/\nrate(beacon_update_head_seconds_count[1m])",
+          "expr": "rate(beacon_update_head_seconds_sum{instance=\"$instance\",job=\"$job\"}[1m])\n/\nrate(beacon_update_head_seconds_count{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1428,7 +1428,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_persist_chain_sum[1m])\n/\nrate(beacon_persist_chain_count[1m])",
+          "expr": "rate(beacon_persist_chain_sum{instance=\"$instance\",job=\"$job\"}[1m])\n/\nrate(beacon_persist_chain_count{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1516,7 +1516,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(beacon_after_finalization_sum[1m])\n/\nrate(beacon_after_finalization_count[1m])",
+          "expr": "rate(beacon_after_finalization_sum{instance=\"$instance\",job=\"$job\"}[1m])\n/\nrate(beacon_after_finalization_count{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1569,7 +1569,54 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "index": -1,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": "label_values(validator_monitor_active, job)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-15m",

@@ -96,7 +96,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_beacon_block_proposer_count",
+          "expr": "vc_beacon_block_proposer_count{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -199,7 +199,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_beacon_block_proposer_count",
+          "expr": "vc_beacon_block_proposer_count{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -327,7 +327,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "system_loadavg_1",
+          "expr": "system_loadavg_1{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -423,7 +423,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "system_virt_mem_free_bytes",
+          "expr": "system_virt_mem_free_bytes{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -519,7 +519,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "process_resident_memory_bytes",
+          "expr": "process_resident_memory_bytes{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -644,7 +644,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_genesis_distance_seconds * -1",
+          "expr": "vc_genesis_distance_seconds{instance=\"$instance\",job=\"$job\"} * -1",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -743,7 +743,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_validators_enabled_count",
+          "expr": "vc_validators_enabled_count{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -844,7 +844,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_validators_total_count",
+          "expr": "vc_validators_total_count{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -972,7 +972,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_signed_beacon_blocks_total",
+          "expr": "vc_signed_beacon_blocks_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1075,7 +1075,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_signed_attestations_total",
+          "expr": "vc_signed_attestations_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1178,7 +1178,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_signed_aggregates_total",
+          "expr": "vc_signed_aggregates_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1281,7 +1281,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_signed_selection_proofs_total",
+          "expr": "vc_signed_selection_proofs_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1411,7 +1411,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(vc_duties_service_task_times_seconds_sum[30s])\n/\nrate(vc_duties_service_task_times_seconds_count[30s])",
+          "expr": "rate(vc_duties_service_task_times_seconds_sum{instance=\"$instance\",job=\"$job\"}[30s])\n/\nrate(vc_duties_service_task_times_seconds_count{instance=\"$instance\",job=\"$job\"}[30s])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1512,7 +1512,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(vc_fork_service_task_times_seconds_sum[30s])\n/\nrate(vc_fork_service_task_times_seconds_count[30s])",
+          "expr": "rate(vc_fork_service_task_times_seconds_sum{instance=\"$instance\",job=\"$job\"}[30s])\n/\nrate(vc_fork_service_task_times_seconds_count{instance=\"$instance\",job=\"$job\"}[30s])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1613,7 +1613,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(vc_attestation_service_task_times_seconds_sum[30s])\n/\nrate(vc_attestation_service_task_times_seconds_count[30s])",
+          "expr": "rate(vc_attestation_service_task_times_seconds_sum{instance=\"$instance\",job=\"$job\"}[30s])\n/\nrate(vc_attestation_service_task_times_seconds_count{instance=\"$instance\",job=\"$job\"}[30s])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1714,7 +1714,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(vc_beacon_block_service_task_times_seconds_sum[30s])\n/\nrate(vc_beacon_block_service_task_times_seconds_count[30s])",
+          "expr": "rate(vc_beacon_block_service_task_times_seconds_sum{instance=\"$instance\",job=\"$job\"}[30s])\n/\nrate(vc_beacon_block_service_task_times_seconds_count{instance=\"$instance\",job=\"$job\"}[30s])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1842,7 +1842,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(info_total[1m])",
+          "expr": "rate(info_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1942,7 +1942,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(warn_total[1m])",
+          "expr": "rate(warn_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2042,7 +2042,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(error_total[1m])",
+          "expr": "rate(error_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2140,7 +2140,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "crit_total",
+          "expr": "crit_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2195,7 +2195,54 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "index": -1,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": "label_values(validator_monitor_active, job)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-1h",

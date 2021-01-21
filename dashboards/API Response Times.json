@@ -59,7 +59,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_server_validator_attestation_get_request_duration_seconds_sum[5m])\n/\nrate(http_server_validator_attestation_get_request_duration_seconds_count[5m])",
+          "expr": "rate(http_server_validator_attestation_get_request_duration_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(http_server_validator_attestation_get_request_duration_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -147,7 +147,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_server_validator_duties_get_request_duration_seconds_sum[5m])\n/\nrate(http_server_validator_duties_get_request_duration_seconds_count[5m])",
+          "expr": "rate(http_server_validator_duties_get_request_duration_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(http_server_validator_duties_get_request_duration_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -235,7 +235,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_server_validator_block_get_request_duration_seconds_sum[5m])\n/\nrate(http_server_validator_block_get_request_duration_seconds_count[5m])",
+          "expr": "rate(http_server_validator_block_get_request_duration_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(http_server_validator_block_get_request_duration_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -288,7 +288,54 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "index": -1,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": "label_values(validator_monitor_active, job)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-15m",

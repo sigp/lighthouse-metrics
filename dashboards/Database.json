@@ -1,14 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
   "__requires": [
     {
       "type": "grafana",
@@ -89,7 +79,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -130,7 +120,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_disk_db_size",
+          "expr": "store_disk_db_size{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -242,7 +232,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -283,7 +273,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(store_disk_db_read_count_total [1m])",
+          "expr": "increase(store_disk_db_read_count_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -336,7 +326,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -377,7 +367,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(store_disk_db_write_count_total [1m])",
+          "expr": "increase(store_disk_db_write_count_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -430,7 +420,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -471,7 +461,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(store_disk_db_read_bytes_total [5m])",
+          "expr": "increase(store_disk_db_read_bytes_total{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -524,7 +514,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -565,7 +555,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(store_disk_db_write_bytes_total [1m])",
+          "expr": "increase(store_disk_db_write_bytes_total{instance=\"$instance\",job=\"$job\"}[1m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -647,7 +637,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -688,7 +678,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(store_beacon_state_read_overhead_seconds_sum[5m])\n/\nrate(store_beacon_state_read_overhead_seconds_count[5m])",
+          "expr": "rate(store_beacon_state_read_overhead_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(store_beacon_state_read_overhead_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -741,7 +731,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -782,7 +772,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(store_beacon_state_write_overhead_seconds_sum[5m])\n/\nrate(store_beacon_state_write_overhead_seconds_count[5m])",
+          "expr": "rate(store_beacon_state_write_overhead_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(store_beacon_state_write_overhead_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -864,7 +854,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -905,7 +895,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_state_read_bytes_total",
+          "expr": "store_beacon_state_read_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -958,7 +948,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -999,7 +989,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_state_write_bytes_total",
+          "expr": "store_beacon_state_write_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1052,7 +1042,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1093,7 +1083,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_state_read_bytes_total",
+          "expr": "store_beacon_state_read_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1146,7 +1136,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1187,7 +1177,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_state_write_bytes_total",
+          "expr": "store_beacon_state_write_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1269,7 +1259,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1310,7 +1300,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(store_beacon_block_read_overhead_seconds_sum[5m])\n/\nrate(store_beacon_block_read_overhead_seconds_count[5m])",
+          "expr": "rate(store_beacon_block_read_overhead_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(store_beacon_block_read_overhead_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1363,7 +1353,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1404,7 +1394,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(store_beacon_block_write_overhead_seconds_sum[5m])\n/\nrate(store_beacon_block_write_overhead_seconds_count[5m])",
+          "expr": "rate(store_beacon_block_write_overhead_seconds_sum{instance=\"$instance\",job=\"$job\"}[5m])\n/\nrate(store_beacon_block_write_overhead_seconds_count{instance=\"$instance\",job=\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1457,7 +1447,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1496,7 +1486,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_block_read_bytes_total",
+          "expr": "store_beacon_block_read_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1549,7 +1539,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1588,7 +1578,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_block_write_bytes_total",
+          "expr": "store_beacon_block_write_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1670,7 +1660,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1709,7 +1699,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_block_read_bytes_total",
+          "expr": "store_beacon_block_read_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1762,7 +1752,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -1801,7 +1791,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "store_beacon_block_write_bytes_total",
+          "expr": "store_beacon_block_write_bytes_total{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -1854,7 +1844,54 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "index": -1,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": "label_values(validator_monitor_active, job)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-15m",

@@ -1,14 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
   "__requires": [
     {
       "type": "grafana",
@@ -53,7 +43,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -114,7 +104,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(slasher_process_batch_time_sum[30s])\n/\nrate(slasher_process_batch_time_count[30s])",
+          "expr": "rate(slasher_process_batch_time_sum{instance=\"$instance\",job=\"$job\"}[30s])\n/\nrate(slasher_process_batch_time_count{instance=\"$instance\",job=\"$job\"}[30s])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -172,7 +162,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -215,7 +205,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slasher_database_size",
+          "expr": "slasher_database_size{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -270,7 +260,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -313,7 +303,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slasher_num_attestations_valid",
+          "expr": "slasher_num_attestations_valid{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -366,7 +356,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -409,7 +399,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slasher_num_attestations_deferred",
+          "expr": "slasher_num_attestations_deferred{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -462,7 +452,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -505,7 +495,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slasher_num_attestations_dropped",
+          "expr": "slasher_num_attestations_dropped{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -558,7 +548,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -601,7 +591,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slasher_num_blocks_processed",
+          "expr": "slasher_num_blocks_processed{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -656,7 +646,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -700,7 +690,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "slasher_compression_ratio",
+          "expr": "slasher_compression_ratio{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -755,7 +745,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -799,7 +789,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(slasher_num_chunks_updated[5m])",
+          "expr": "rate(slasher_num_chunks_updated{instance=\"$instance\",job=\"$job\"}[5m])",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -855,7 +845,54 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "index": -1,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": "label_values(validator_monitor_active, job)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "Prometheus",
+        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-24h",
