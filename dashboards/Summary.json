@@ -4632,7 +4632,7 @@
         "allValue": null,
         "current": {},
         "datasource": "Prometheus",
-        "definition": "label_values(validator_monitor_validators_total{job=\"$job\"}, instance)",
+        "definition": "",
         "error": null,
         "hide": 0,
         "includeAll": false,
