@@ -199,7 +199,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "vc_beacon_block_proposer_count",
+          "expr": "vc_beacon_attester_count",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
