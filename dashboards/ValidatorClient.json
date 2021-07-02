@@ -28,7 +28,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 8,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -38,12 +38,77 @@
         "content": "\n# Lighthouse Metrics\n\nMetrics collected from a Lighthouse Validator Client.\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgb(199, 208, 217)",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 5,
+        "y": 0
+      },
+      "id": 139,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "lighthouse_info",
+          "interval": "",
+          "legendFormat": "",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "title": "Build",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "valueLabel": "version"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
     },
     {
       "aliasColors": {},
@@ -86,7 +151,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -124,7 +189,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:140",
           "decimals": 0,
           "format": "none",
           "label": "BeaconBlock",
@@ -134,7 +198,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:141",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -189,7 +252,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -227,7 +290,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:140",
           "decimals": 0,
           "format": "none",
           "label": "Attestation",
@@ -237,7 +299,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:141",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -271,7 +332,7 @@
         "content": "\n### Consensus\n\nOverview of consensus between nodes.\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -317,7 +378,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -413,7 +474,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -509,7 +570,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -586,7 +647,7 @@
         "content": "\n### Consensus\n\nOverview of consensus between nodes.\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -634,7 +695,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -733,7 +794,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -834,7 +895,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -914,7 +975,7 @@
         "content": "\n### Consensus\n\nOverview of consensus between nodes.\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -962,7 +1023,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1000,7 +1061,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:351",
           "decimals": 0,
           "format": "none",
           "label": "BeaconBlock",
@@ -1010,7 +1070,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:352",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1065,7 +1124,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1103,7 +1162,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:404",
           "decimals": 0,
           "format": "none",
           "label": "Attestation",
@@ -1113,7 +1171,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:405",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1168,7 +1225,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1206,7 +1263,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:457",
           "decimals": 0,
           "format": "none",
           "label": "SignedAggregateAndProof",
@@ -1216,7 +1272,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:458",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1271,7 +1326,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1309,7 +1364,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:510",
           "decimals": 0,
           "format": "none",
           "label": "SelectionProof",
@@ -1319,7 +1373,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:511",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1353,7 +1406,7 @@
         "content": "\n### Consensus\n\nOverview of consensus between nodes.\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1401,7 +1454,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1502,7 +1555,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1603,7 +1656,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1704,7 +1757,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1784,7 +1837,7 @@
         "content": "\n### Logs\n\nOverview of logs (includes beacon nodes)\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1832,7 +1885,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1868,7 +1921,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:269",
           "format": "none",
           "label": null,
           "logBase": 1,
@@ -1877,7 +1929,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:270",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1932,7 +1983,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2032,7 +2083,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2130,7 +2181,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2191,7 +2242,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -2228,5 +2279,5 @@
   "timezone": "",
   "title": "Validator Client",
   "uid": "3Onh0kAGk",
-  "version": 9
+  "version": 10
 }
