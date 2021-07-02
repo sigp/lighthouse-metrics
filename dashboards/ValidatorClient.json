@@ -82,7 +82,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Lighthouse/v1\\.4.0\\-379664a\\+$/",
+          "fields": "",
           "values": false
         },
         "text": {},
