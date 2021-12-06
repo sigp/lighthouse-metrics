@@ -82,7 +82,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1638742661590,
+  "iteration": 1638742661593,
   "links": [],
   "panels": [
     {
@@ -2612,47 +2612,71 @@
     },
     {
       "datasource": "${DS_PROMETHEUS}",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
-          "mappings": []
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 5,
+        "h": 6,
+        "w": 12,
         "x": 0,
         "y": 79
       },
-      "id": 47,
+      "id": 57,
       "options": {
-        "displayLabels": [
-          "name"
-        ],
         "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "last"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
@@ -2661,77 +2685,15 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(gossipsub_ignored_messages_per_topic_total[$__rate_interval])*12",
-          "instant": false,
+          "expr": "rate(gossipsub_scoring_penalties_total[$__rate_interval])*12",
           "interval": "",
-          "legendFormat": "{{hash}}",
+          "legendFormat": "{{penalty}}",
           "refId": "A"
         }
       ],
-      "title": "Ignored Messages Per Slot",
+      "title": "Gossip Penalties Per Slot",
       "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 5,
-        "x": 6,
-        "y": 79
-      },
-      "id": 29,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_unaccepted_messages_per_client[$__rate_interval])*12",
-          "interval": "",
-          "legendFormat": "{{client}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Gossipsub Ignored Messages Per Client per Slot",
-      "transparent": true,
-      "type": "piechart"
+      "type": "timeseries"
     },
     {
       "datasource": "${DS_PROMETHEUS}",
@@ -2866,69 +2828,47 @@
     },
     {
       "datasource": "${DS_PROMETHEUS}",
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
             }
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
+          "mappings": []
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 12,
+        "h": 7,
+        "w": 5,
         "x": 0,
-        "y": 86
+        "y": 85
       },
-      "id": 57,
+      "id": 47,
       "options": {
+        "displayLabels": [
+          "name"
+        ],
         "legend": {
-          "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
         "tooltip": {
           "mode": "single"
@@ -2937,15 +2877,77 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(gossipsub_broken_promises[$__rate_interval])*12",
+          "expr": "rate(gossipsub_ignored_messages_per_topic_total[$__rate_interval])*12",
+          "instant": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{hash}}",
           "refId": "A"
         }
       ],
-      "title": "Broken Promises Per Slot",
+      "title": "Ignored Messages Per Slot",
       "transparent": true,
-      "type": "timeseries"
+      "type": "piechart"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 5,
+        "x": 6,
+        "y": 85
+      },
+      "id": 29,
+      "options": {
+        "displayLabels": [
+          "name"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(gossipsub_unaccepted_messages_per_client[$__rate_interval])*12",
+          "interval": "",
+          "legendFormat": "{{client}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Gossipsub Ignored Messages Per Client per Slot",
+      "transparent": true,
+      "type": "piechart"
     },
     {
       "datasource": "${DS_PROMETHEUS}",
@@ -3027,11 +3029,102 @@
           },
           "mappings": []
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "*.*beacon_attestation*.*"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "attestation"
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "/eth2/afcaaba0/beacon_aggregate_and_proof",
+                  "beacon_attestation_0",
+                  "beacon_attestation_1",
+                  "beacon_attestation_10",
+                  "beacon_attestation_11",
+                  "beacon_attestation_12",
+                  "beacon_attestation_13",
+                  "beacon_attestation_14",
+                  "beacon_attestation_16",
+                  "beacon_attestation_18",
+                  "beacon_attestation_2",
+                  "beacon_attestation_20",
+                  "beacon_attestation_21",
+                  "beacon_attestation_22",
+                  "beacon_attestation_23",
+                  "beacon_attestation_24",
+                  "beacon_attestation_26",
+                  "beacon_attestation_27",
+                  "beacon_attestation_28",
+                  "beacon_attestation_29",
+                  "beacon_attestation_3",
+                  "beacon_attestation_31",
+                  "beacon_attestation_32",
+                  "beacon_attestation_34",
+                  "beacon_attestation_35",
+                  "beacon_attestation_36",
+                  "beacon_attestation_38",
+                  "beacon_attestation_39",
+                  "beacon_attestation_4",
+                  "beacon_attestation_40",
+                  "beacon_attestation_41",
+                  "beacon_attestation_42",
+                  "beacon_attestation_44",
+                  "beacon_attestation_46",
+                  "beacon_attestation_47",
+                  "beacon_attestation_49",
+                  "beacon_attestation_5",
+                  "beacon_attestation_51",
+                  "beacon_attestation_52",
+                  "beacon_attestation_54",
+                  "beacon_attestation_55",
+                  "beacon_attestation_57",
+                  "beacon_attestation_59",
+                  "beacon_attestation_60",
+                  "beacon_attestation_61",
+                  "beacon_attestation_62",
+                  "beacon_attestation_7",
+                  "beacon_attestation_8",
+                  "beacon_attestation_9",
+                  "/eth2/afcaaba0/beacon_block",
+                  "/eth2/afcaaba0/proposer_slashing",
+                  "sync_commitee_0",
+                  "sync_commitee_3",
+                  "sync_commitee_contribution_and_proof",
+                  "/eth2/afcaaba0/voluntary_exit"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 13,
-        "w": 4,
+        "w": 5,
         "x": 0,
         "y": 92
       },
@@ -3063,86 +3156,41 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "gossipsub_peers_per_attestation_subnet_topic_count",
+          "expr": "gossipsub_topic_peers_counts",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{subnet}}",
+          "legendFormat": "{{hash}}",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
       "title": "Subscribed Peers Per Subnet",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 4,
-        "x": 4,
-        "y": 92
-      },
-      "id": 26,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
+      "transformations": [
         {
-          "exemplar": true,
-          "expr": "gossipsub_peers_per_sync_subnet_topic_count",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*beacon_attestation)",
+            "renamePattern": "beacon_attestation"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy.*)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*sync_committee)",
+            "renamePattern": "sync_commitee"
+          }
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Subscribed Peers Per Sync Committee",
       "transparent": true,
       "type": "piechart"
     },
@@ -3206,6 +3254,74 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Average Peer Score Per Subnet",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 4,
+        "x": 4,
+        "y": 105
+      },
+      "id": 26,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "gossipsub_peers_per_sync_subnet_topic_count",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{subnet}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Subscribed Peers Per Sync Committee",
       "transparent": true,
       "type": "piechart"
     }
