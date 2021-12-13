@@ -9,6 +9,7 @@
       "pluginName": "Prometheus"
     }
   ],
+  "__elements": [],
   "__requires": [
     {
       "type": "panel",
@@ -26,7 +27,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "8.1.3"
+      "version": "8.3.1"
     },
     {
       "type": "panel",
@@ -79,14 +80,14 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1638742661593,
+  "iteration": 1638936461245,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
       "description": "",
       "gridPos": {
         "h": 2,
@@ -99,13 +100,15 @@
         "content": "# Health\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -180,8 +183,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "libp2p_peer_connected_peers_total",
+          "expr": "libp2p_peers",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -190,14 +197,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Connected Peers",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Is the UDP port forwarded",
       "fieldConfig": {
         "defaults": {
@@ -276,10 +284,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
           "expr": "nat_open",
           "instant": true,
           "interval": "",
@@ -292,7 +304,10 @@
       "type": "stat"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -324,6 +339,7 @@
       },
       "id": 36,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -335,11 +351,15 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_blocks_rx_total[$__rate_interval])*12",
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -351,7 +371,10 @@
       "type": "gauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Peers via client implementations",
       "fieldConfig": {
         "defaults": {
@@ -412,14 +435,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Connected Clients",
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Peers that have dialed us",
       "fieldConfig": {
         "defaults": {
@@ -493,7 +517,10 @@
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -572,14 +599,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Libp2p Bandwidth",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -658,14 +686,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Libp2p Inbound Bandwidth",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -744,14 +773,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Libp2p Outbound Bandwidth",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Average Peer score per client shifted by 100",
       "fieldConfig": {
         "defaults": {
@@ -810,7 +840,10 @@
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Peers sync status",
       "fieldConfig": {
         "defaults": {
@@ -874,7 +907,10 @@
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -954,14 +990,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Bandwidth",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1041,14 +1078,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Discovery Inbound Bandwith",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1128,14 +1166,11 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Discovery Outbound Bandwidth",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "description": "",
       "gridPos": {
         "h": 2,
@@ -1148,12 +1183,15 @@
         "content": "# Discovery Metrics\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1232,14 +1270,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Unsolicited Discovery Requests/s",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1322,14 +1361,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Active Discv5 Sessions",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1374,7 +1414,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "expr": "discovery_queue_size",
@@ -1383,14 +1423,11 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Queued Discovery Queries",
       "transparent": true,
       "type": "gauge"
     },
     {
-      "datasource": null,
       "description": "",
       "gridPos": {
         "h": 2,
@@ -1403,12 +1440,15 @@
         "content": "# RPC Metrics\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Distribution of connected peer's score by quartile",
       "fieldConfig": {
         "defaults": {
@@ -1502,7 +1542,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1586,7 +1629,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1648,7 +1694,10 @@
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1709,7 +1758,10 @@
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1789,7 +1841,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "description": "",
       "gridPos": {
         "h": 2,
@@ -1802,12 +1853,15 @@
         "content": "# Gossipsub Metrics\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1911,14 +1965,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Mesh Peers",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1950,6 +2005,7 @@
       },
       "id": 38,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1961,7 +2017,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -1977,7 +2033,10 @@
       "type": "gauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2013,6 +2072,7 @@
       },
       "id": 37,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2024,7 +2084,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -2040,7 +2100,10 @@
       "type": "gauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2072,6 +2135,7 @@
       },
       "id": 44,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2083,23 +2147,30 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "rate(gossipsub_invalid_message_topic[$__rate_interval])*12",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "sum(rate(gossipsub_invalid_messages_per_topic[$__rate_interval]))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{topic}}",
           "refId": "A"
         }
       ],
-      "title": "Invalid Messages Per Topic Per Slot",
+      "title": "Invalid Messages Per Slot",
       "transparent": true,
       "type": "gauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Cache Misses over a 10m window",
       "fieldConfig": {
         "defaults": {
@@ -2131,6 +2202,7 @@
       },
       "id": 42,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2142,11 +2214,15 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_memcache_misses_total[10m])",
+          "expr": "rate(gossipsub_memcache_misses_total[$__rate_interval])",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -2157,7 +2233,10 @@
       "type": "gauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2196,26 +2275,31 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
           "expr": "rate(gossipsub_score_per_mesh_bucket{hash=\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy\"}[$__rate_interval])",
           "format": "heatmap",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "{{le}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Aggregate and Proof Peer Score",
       "transparent": true,
       "type": "bargauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2255,7 +2339,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -2272,7 +2356,10 @@
       "type": "bargauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2355,11 +2442,37 @@
         }
       ],
       "title": "IWANT Requests Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_aggregate)",
+            "renamePattern": "beacon_aggregate"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_block)",
+            "renamePattern": "beacon_block"
+          }
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2439,7 +2552,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2521,11 +2637,37 @@
         }
       ],
       "title": "Duplicates Filtered Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_aggregate)",
+            "renamePattern": "beacon_aggregate"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_block)",
+            "renamePattern": "beacon_block"
+          }
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Gossipsub Attestation Errors By Type",
       "fieldConfig": {
         "defaults": {
@@ -2611,7 +2753,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2696,7 +2841,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2755,14 +2903,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "BeaconBlock Mesh Peers",
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2820,14 +2969,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "BeaconAggregateAndProof Mesh Peers",
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2885,11 +3035,37 @@
         }
       ],
       "title": "Ignored Messages Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon)",
+            "renamePattern": "beacon"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/sync_committee)",
+            "renamePattern": "sync_committee"
+          }
+        }
+      ],
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2950,7 +3126,10 @@
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2969,164 +3148,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 5,
+        "h": 12,
+        "w": 7,
         "x": 12,
         "y": 86
-      },
-      "id": 25,
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_avg_peer_score_per_sync_subnet_topic",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Peer Score Per Sync Committee",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "*.*beacon_attestation*.*"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "attestation"
-              }
-            ]
-          },
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "/eth2/afcaaba0/beacon_aggregate_and_proof",
-                  "beacon_attestation_0",
-                  "beacon_attestation_1",
-                  "beacon_attestation_10",
-                  "beacon_attestation_11",
-                  "beacon_attestation_12",
-                  "beacon_attestation_13",
-                  "beacon_attestation_14",
-                  "beacon_attestation_16",
-                  "beacon_attestation_18",
-                  "beacon_attestation_2",
-                  "beacon_attestation_20",
-                  "beacon_attestation_21",
-                  "beacon_attestation_22",
-                  "beacon_attestation_23",
-                  "beacon_attestation_24",
-                  "beacon_attestation_26",
-                  "beacon_attestation_27",
-                  "beacon_attestation_28",
-                  "beacon_attestation_29",
-                  "beacon_attestation_3",
-                  "beacon_attestation_31",
-                  "beacon_attestation_32",
-                  "beacon_attestation_34",
-                  "beacon_attestation_35",
-                  "beacon_attestation_36",
-                  "beacon_attestation_38",
-                  "beacon_attestation_39",
-                  "beacon_attestation_4",
-                  "beacon_attestation_40",
-                  "beacon_attestation_41",
-                  "beacon_attestation_42",
-                  "beacon_attestation_44",
-                  "beacon_attestation_46",
-                  "beacon_attestation_47",
-                  "beacon_attestation_49",
-                  "beacon_attestation_5",
-                  "beacon_attestation_51",
-                  "beacon_attestation_52",
-                  "beacon_attestation_54",
-                  "beacon_attestation_55",
-                  "beacon_attestation_57",
-                  "beacon_attestation_59",
-                  "beacon_attestation_60",
-                  "beacon_attestation_61",
-                  "beacon_attestation_62",
-                  "beacon_attestation_7",
-                  "beacon_attestation_8",
-                  "beacon_attestation_9",
-                  "/eth2/afcaaba0/beacon_block",
-                  "/eth2/afcaaba0/proposer_slashing",
-                  "sync_commitee_0",
-                  "sync_commitee_3",
-                  "sync_commitee_contribution_and_proof",
-                  "/eth2/afcaaba0/voluntary_exit"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 5,
-        "x": 0,
-        "y": 92
       },
       "id": 16,
       "options": {
@@ -3155,8 +3180,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "gossipsub_topic_peers_counts",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "gossipsub_topic_peers_counts{hash!~\".*attester_slashing.*|.*beacon_aggregate_and_proof.*|.*beacon_block.*|.*proposer_slashing.*|.*voluntary_exit.*|.*sync_committee_contribution_and_proof.*\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -3165,9 +3194,7 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Subscribed Peers Per Subnet",
+      "title": "Subscribed Peers Per Topic",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -3187,161 +3214,29 @@
           "id": "renameByRegex",
           "options": {
             "regex": "(.*sync_committee)",
-            "renamePattern": "sync_commitee"
+            "renamePattern": "sync_committee"
           }
         }
       ],
       "transparent": true,
       "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 8,
-        "y": 92
-      },
-      "id": 18,
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_avg_peer_score_per_attestation_subnet_topic",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Peer Score Per Subnet",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 4,
-        "x": 4,
-        "y": 105
-      },
-      "id": 26,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_peers_per_sync_subnet_topic_count",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Subscribed Peers Per Sync Committee",
-      "transparent": true,
-      "type": "piechart"
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 30,
+  "schemaVersion": 33,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
         "definition": "label_values(process_virtual_memory_bytes,instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "Instance",
         "options": [],
@@ -3365,5 +3260,6 @@
   "timezone": "",
   "title": "Lighthouse Network",
   "uid": "QCrwGdI7k",
-  "version": 3
+  "version": 2,
+  "weekStart": ""
 }
