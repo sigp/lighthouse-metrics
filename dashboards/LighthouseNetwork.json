@@ -27,7 +27,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "8.3.1"
+      "version": "8.3.3"
     },
     {
       "type": "panel",
@@ -83,7 +83,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1638936461245,
+  "iteration": 1642462348268,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -100,7 +100,7 @@
         "content": "# Health\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "transparent": true,
       "type": "text"
     },
@@ -284,7 +284,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -351,7 +351,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -1183,7 +1183,7 @@
         "content": "# Discovery Metrics\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "transparent": true,
       "type": "text"
     },
@@ -1414,7 +1414,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "discovery_queue_size",
@@ -1440,7 +1440,7 @@
         "content": "# RPC Metrics\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "transparent": true,
       "type": "text"
     },
@@ -1853,7 +1853,7 @@
         "content": "# Gossipsub Metrics\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "transparent": true,
       "type": "text"
     },
@@ -2017,7 +2017,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2084,7 +2084,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2147,7 +2147,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -2214,7 +2214,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -2275,7 +2275,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -2339,7 +2339,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2433,8 +2433,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_topic_iwant_msgs_total{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
+          "expr": "gossipsub_topic_iwant_msgs_total",
           "instant": false,
           "interval": "",
           "legendFormat": "{{hash}}",
@@ -3223,7 +3227,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 33,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3253,13 +3257,13 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Lighthouse Network",
   "uid": "QCrwGdI7k",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
