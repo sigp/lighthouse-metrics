@@ -7,21 +7,10 @@
       "type": "datasource",
       "pluginId": "prometheus",
       "pluginName": "Prometheus"
-    },
-    {
-      "name": "DS___EXPR__",
-      "label": "__expr__",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "__expr__"
     }
   ],
+  "__elements": [],
   "__requires": [
-    {
-      "type": "datasource",
-      "id": "__expr__",
-      "version": "1.0.0"
-    },
     {
       "type": "panel",
       "id": "bargauge",
@@ -38,7 +27,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "8.1.3"
+      "version": "8.3.3"
     },
     {
       "type": "panel",
@@ -51,6 +40,12 @@
       "id": "prometheus",
       "name": "Prometheus",
       "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
     },
     {
       "type": "panel",
@@ -85,104 +80,35 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
+  "iteration": 1642462348268,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 53,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "title": "Panel Title",
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
       "description": "",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 0
       },
       "id": 10,
       "options": {
         "content": "# Health\n \n           ",
         "mode": "markdown"
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.3",
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -195,7 +121,7 @@
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 10,
-            "gradientMode": "opacity",
+            "gradientMode": "scheme",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -237,10 +163,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 12,
+        "h": 7,
+        "w": 15,
         "x": 0,
-        "y": 10
+        "y": 2
       },
       "id": 4,
       "links": [],
@@ -257,8 +183,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "libp2p_peer_connected_peers_total",
+          "expr": "libp2p_peers",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -267,21 +197,49 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Connected Peers",
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Is the UDP port forwarded",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "continuous-GrYlRd"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "Closed"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "Open"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "Closed"
+                }
+              },
+              "type": "special"
+            }
+          ],
           "max": 1,
           "min": 0,
           "thresholds": {
@@ -305,16 +263,86 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 4,
+        "h": 4,
+        "w": 2,
         "x": 15,
-        "y": 10
+        "y": 2
       },
       "id": 34,
       "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "allIsNull"
+            "firstNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "nat_open",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "NAT",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 17,
+        "y": 2
+      },
+      "id": 36,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
           ],
           "fields": "",
           "values": false
@@ -323,23 +351,30 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.3",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "libp2p_address_update_total",
-          "instant": true,
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "NAT Open",
+      "title": "Blocks Per Slot",
       "transparent": true,
       "type": "gauge"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "Peers via client implementations",
       "fieldConfig": {
         "defaults": {
@@ -360,10 +395,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 19,
-        "y": 10
+        "y": 2
       },
       "id": 6,
       "options": {
@@ -377,7 +412,7 @@
             "value"
           ]
         },
-        "pieType": "donut",
+        "pieType": "pie",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -400,13 +435,1932 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Connected Clients",
+      "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Peers that have dialed us",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 15,
+        "y": 6
+      },
+      "id": 2,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "network_inbound_peers",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Inbound",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "network_outbound_peers",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Outbound",
+          "refId": "B"
+        }
+      ],
+      "title": "Peer Type",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 0,
+        "y": 9
+      },
+      "id": 59,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(libp2p_total_bandwidth[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Libp2p Bandwidth",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 5,
+        "y": 9
+      },
+      "id": 61,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(libp2p_inbound_bytes[1m])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Libp2p Inbound Bandwidth",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 10,
+        "y": 9
+      },
+      "id": 63,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(libp2p_outbound_bytes[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Libp2p Outbound Bandwidth",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Average Peer score per client shifted by 100",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 19,
+        "y": 9
+      },
+      "id": 53,
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "peer_score_per_client+100",
+          "interval": "",
+          "legendFormat": "{{client}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Peer Score Per Client",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Peers sync status",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 15,
+        "y": 11
+      },
+      "id": 7,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sync_peers_per_status",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{sync_status}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Peer Sync Status",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 0,
+        "y": 15
+      },
+      "id": 78,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(libp2p_total_bandwidth[$__rate_interval]) + rate(discovery_sent_bytes[$__rate_interval]) + rate(discovery_recv_bytes[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Bandwidth",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 5,
+        "y": 15
+      },
+      "id": 76,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(discovery_recv_bytes[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Discovery Inbound Bandwith",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 10,
+        "y": 15
+      },
+      "id": 77,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(discovery_sent_bytes[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "bytes/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Discovery Outbound Bandwidth",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 49,
+      "options": {
+        "content": "# Discovery Metrics\n \n           ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.3.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 0,
+        "y": 23
+      },
+      "id": 65,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "discovery_requests",
+          "interval": "",
+          "legendFormat": "Requests/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Unsolicited Discovery Requests/s",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 10,
+        "x": 10,
+        "y": 23
+      },
+      "id": 67,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "discovery_sessions",
+          "interval": "",
+          "legendFormat": "active sessions",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Discv5 Sessions",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 20,
+        "y": 23
+      },
+      "id": 69,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "expr": "discovery_queue_size",
+          "interval": "",
+          "legendFormat": "Queued Discoveries",
+          "refId": "A"
+        }
+      ],
+      "title": "Queued Discovery Queries",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 48,
+      "options": {
+        "content": "# RPC Metrics\n \n           ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.3.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Distribution of connected peer's score by quartile",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 0,
+          "min": -25,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": -30
+              },
+              {
+                "color": "transparent",
+                "value": -20
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": 51,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "peer_score_distribution",
+          "interval": "",
+          "legendFormat": "{{position}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Connected Peer Score Distribution",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "id": 32,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(rate(libp2p_rpc_errors_per_client{}[$__rate_interval]))",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Errors Per Second",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Error Rate",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 5,
+        "x": 0,
+        "y": 39
+      },
+      "id": 30,
+      "options": {
+        "displayLabels": [
+          "name"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "{rpc_error=~\"incomplete_stream|invalid_request|io_error\"}",
+          "interval": "",
+          "legendFormat": "{{client}}",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Errors (Non timeout)",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 5,
+        "x": 5,
+        "y": 39
+      },
+      "id": 28,
+      "options": {
+        "displayLabels": [
+          "name"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "libp2p_rpc_errors_per_client{rpc_error=~\"negotiation_timeout|stream_timeout\"}",
+          "interval": "",
+          "legendFormat": "{{client}}",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Timeouts Per Client",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 13,
+        "x": 11,
+        "y": 39
+      },
+      "id": 75,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(libp2p_rpc_requests_total[10m])",
+          "interval": "",
+          "legendFormat": "{{type}}",
+          "refId": "A"
+        }
+      ],
+      "title": "10m Average RPC Requests per Second",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 9,
+      "options": {
+        "content": "# Gossipsub Metrics\n \n           ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.3.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 12,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              },
+              {
+                "color": "semi-dark-blue",
+                "value": 3
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 4
+              },
+              {
+                "color": "light-green",
+                "value": 5
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 7
+              },
+              {
+                "color": "#EAB839",
+                "value": 10
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 12
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 0,
+        "y": 49
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "gossipsub_mesh_peer_counts{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Mesh Peers",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 10,
+        "y": 49
+      },
+      "id": 38,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Blocks Per Slot",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 768
+              },
+              {
+                "color": "dark-red",
+                "value": 1000
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 14,
+        "y": 49
+      },
+      "id": 37,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy\"}[$__rate_interval])*12",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Aggregated Attestations Per Slot",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 18,
+        "y": 49
+      },
+      "id": 44,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "sum(rate(gossipsub_invalid_messages_per_topic[$__rate_interval]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{topic}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Invalid Messages Per Slot",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Cache Misses over a 10m window",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 21,
+        "y": 49
+      },
+      "id": 42,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(gossipsub_memcache_misses_total[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Cache Misses",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 55
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "rate(gossipsub_score_per_mesh_bucket{hash=\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy\"}[$__rate_interval])",
+          "format": "heatmap",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Aggregate and Proof Peer Score",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 55
+      },
+      "id": 71,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(beacon_block_gossip_slot_start_delay_time_bucket[10m])*12",
+          "format": "heatmap",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{le}}",
+          "refId": "A"
+        }
+      ],
+      "title": "10m Average of Block Delay from Start of Slot",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -460,30 +2414,101 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 1,
-        "y": 16
+        "x": 0,
+        "y": 65
       },
-      "id": 51,
+      "id": 43,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
         }
       },
-      "title": "Peer Score Distribution",
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "gossipsub_topic_iwant_msgs_total",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "IWANT Requests Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_aggregate)",
+            "renamePattern": "beacon_aggregate"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_block)",
+            "renamePattern": "beacon_block"
+          }
+        }
+      ],
+      "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -492,10 +2517,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 2
               }
             ]
           }
@@ -503,197 +2524,42 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 14,
-        "y": 16
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 65
       },
-      "id": 36,
+      "id": 73,
       "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_blocks_rx_total[$__rate_interval])*12",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Blocks Per Slot",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "Peers that have dialed us",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 5,
-        "x": 19,
-        "y": 16
-      },
-      "id": 2,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
         "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
         }
       },
-      "pluginVersion": "8.1.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "network_inbound_peers",
-          "instant": true,
+          "expr": "rate(beacon_block_gossip_slot_start_delay_time_sum[30s])/rate(beacon_block_gossip_slot_start_delay_time_count[30s])",
           "interval": "",
-          "legendFormat": "Inbound Peers",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "network_outbound_peers",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Outbound Peers",
-          "refId": "B"
-        }
-      ],
-      "title": "Peer Type",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "Peers sync status",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 19,
-        "y": 21
-      },
-      "id": 7,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sync_peers_per_status",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{sync_status}}",
+          "legendFormat": "Block Delay",
           "refId": "A"
         }
       ],
-      "title": "Peer Sync Status",
+      "title": "30s Block Delay Average",
       "transparent": true,
-      "type": "piechart"
+      "type": "timeseries"
     },
     {
-      "datasource": null,
-      "description": "",
-      "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 27
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
-      "id": 48,
-      "options": {
-        "content": "# RPC Metrics\n \n           ",
-        "mode": "markdown"
-      },
-      "pluginVersion": "8.1.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -705,16 +2571,13 @@
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "opacity",
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -739,8 +2602,8 @@
                 "value": null
               },
               {
-                "color": "dark-red",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -748,259 +2611,100 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 73
       },
-      "id": 32,
+      "id": 46,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
         }
       },
+      "pluginVersion": "8.1.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(libp2p_rpc_errors_per_client{}[$__rate_interval]))",
+          "expr": "rate(gossipsub_topic_msg_recv_counts_unfiltered_total{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12 - rate(gossipsub_topic_msg_recv_counts_total{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
-          "legendFormat": "Errors Per Second",
+          "legendFormat": "{{hash}}",
           "refId": "A"
         }
       ],
-      "title": "RPC Error Rate",
+      "title": "Duplicates Filtered Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_aggregate)",
+            "renamePattern": "beacon_aggregate"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_block)",
+            "renamePattern": "beacon_block"
+          }
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Gossipsub Attestation Errors By Type",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 29
-      },
-      "id": 28,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "libp2p_rpc_errors_per_client{rpc_error=~\"negotiation_timeout|stream_timeout\"}",
-          "interval": "",
-          "legendFormat": "{{client}}",
-          "refId": "A"
-        }
-      ],
-      "title": "RPC Timeouts Per Client",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 37
-      },
-      "id": 49,
-      "options": {
-        "content": "# Discovery Metrics\n \n           ",
-        "mode": "markdown"
-      },
-      "pluginVersion": "8.1.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 39
-      },
-      "id": 9,
-      "options": {
-        "content": "# Gossipsub Metrics\n \n           ",
-        "mode": "markdown"
-      },
-      "pluginVersion": "8.1.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "Cache Misses over a 10m window",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 5
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 0,
-        "y": 41
-      },
-      "id": 42,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_cache_misses[10m])",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Cache Misses",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 5,
-        "y": 41
-      },
-      "id": 43,
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_iwant_requests[$__rate_interval])*12",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{topic}}",
-          "refId": "A"
-        }
-      ],
-      "title": "IWANT Requests",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -1020,267 +2724,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 10,
-        "y": 41
-      },
-      "id": 44,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_invalid_message_topic[$__rate_interval])*12",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{topic}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Invalid Messages Per Topic Per Slot",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 2
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
         "h": 6,
-        "w": 5,
-        "x": 0,
-        "y": 49
-      },
-      "id": 38,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_blocks_rx_total[$__rate_interval])*12",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Blocks Per Slot",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 768
-              },
-              {
-                "color": "dark-red",
-                "value": 800
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 5,
-        "y": 49
-      },
-      "id": 37,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "rate(gossipsub_aggregated_attestations_rx_total[$__rate_interval])*12",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Aggregated Attestations Per Slot",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
         "w": 12,
         "x": 12,
-        "y": 49
-      },
-      "id": 30,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "{rpc_error=~\"incomplete_stream|invalid_request|io_error\"}",
-          "interval": "",
-          "legendFormat": "{{client}}",
-          "refId": "A"
-        }
-      ],
-      "title": "RPC Errors (Non timeout)",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "Gossipsub Attestation Errors By Type",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 55
+        "y": 73
       },
       "id": 40,
       "options": {
-        "displayLabels": [
-          "name"
-        ],
         "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
@@ -1298,202 +2754,101 @@
       ],
       "title": "Attestation Errors Per Slot",
       "transparent": true,
-      "type": "piechart"
+      "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
-          "mappings": []
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 12,
-        "x": 12,
-        "y": 57
-      },
-      "id": 29,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_unaccepted_messages_per_client",
-          "interval": "",
-          "legendFormat": "{{client}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Gossipsub Ignored Messages Per Client",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 15,
-        "w": 6,
         "x": 0,
-        "y": 63
+        "y": 79
       },
-      "id": 16,
+      "id": 57,
       "options": {
-        "displayLabels": [
-          "value"
-        ],
         "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "last"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
         }
       },
-      "pluginVersion": "8.1.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "gossipsub_peers_per_attestation_subnet_topic_count",
-          "format": "time_series",
-          "instant": true,
+          "expr": "rate(gossipsub_scoring_penalties_total[$__rate_interval])*12",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{subnet}}",
+          "legendFormat": "{{penalty}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Subscribed Peers Per Subnet",
+      "title": "Gossip Penalties Per Slot",
       "transparent": true,
-      "type": "piechart"
+      "type": "timeseries"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
-      "gridPos": {
-        "h": 15,
-        "w": 7,
-        "x": 6,
-        "y": 65
-      },
-      "id": 18,
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_avg_peer_score_per_attestation_subnet_topic",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Peer Score Per Subnet",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1513,9 +2868,9 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 5,
-        "x": 18,
-        "y": 65
+        "w": 4,
+        "x": 12,
+        "y": 79
       },
       "id": 22,
       "options": {
@@ -1544,6 +2899,7 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "exemplar": true,
           "expr": "block_mesh_peers_per_client",
           "instant": true,
           "interval": "",
@@ -1551,14 +2907,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "BeaconBlock Mesh Peers",
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1577,143 +2934,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 17,
-        "y": 72
-      },
-      "id": 20,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "expr": "gossipsub_mean_scores_per_client",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{Client}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Mean scores per client",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 15,
-        "w": 6,
-        "x": 0,
-        "y": 78
-      },
-      "id": 26,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_peers_per_sync_subnet_topic_count",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Subscribed Peers Per Sync Committee",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 17,
-        "y": 78
+        "h": 7,
+        "w": 4,
+        "x": 16,
+        "y": 79
       },
       "id": 24,
       "options": {
@@ -1749,15 +2973,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "BeaconAggregateAndProof Mesh Peers",
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1775,156 +2999,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 15,
-        "w": 7,
-        "x": 6,
-        "y": 80
-      },
-      "id": 25,
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_avg_peer_score_per_sync_subnet_topic",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{subnet}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Peer Score Per Sync Committee",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 7,
+        "w": 5,
         "x": 0,
-        "y": 95
-      },
-      "id": 14,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_avg_peer_score_per_topic",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{topic_hash}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Average Peer Score per Topic",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 95
+        "y": 85
       },
       "id": 47,
       "options": {
@@ -1953,111 +3031,45 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (topic) (rate(gossipsub_mesh_metrics_by_topic{metric=\"MessagesIgnored\",topic=~\"attester_slashing|beacon_aggregate_and_proof|beacon_block|proposer_slashing|signed_contribution_and_proof|voluntary_exit\"}[1m]))*12",
+          "expr": "rate(gossipsub_ignored_messages_per_topic_total[$__rate_interval])*12",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{topic}}",
+          "legendFormat": "{{hash}}",
           "refId": "A"
-        },
-        {
-          "datasource": "${DS___EXPR__}",
-          "expression": "A",
-          "hide": false,
-          "reducer": "sum",
-          "refId": "B",
-          "type": "reduce"
         }
       ],
       "title": "Ignored Messages Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon)",
+            "renamePattern": "beacon"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/sync_committee)",
+            "renamePattern": "sync_committee"
+          }
+        }
+      ],
       "transparent": true,
       "type": "piechart"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "max": 12,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-blue",
-                "value": null
-              },
-              {
-                "color": "semi-dark-blue",
-                "value": 3
-              },
-              {
-                "color": "#6ED0E0",
-                "value": 4
-              },
-              {
-                "color": "light-green",
-                "value": 5
-              },
-              {
-                "color": "semi-dark-green",
-                "value": 7
-              },
-              {
-                "color": "#EAB839",
-                "value": 10
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 12
-              }
-            ]
-          }
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
-      "gridPos": {
-        "h": 5,
-        "w": 10,
-        "x": 0,
-        "y": 103
-      },
-      "id": 12,
-      "options": {
-        "displayMode": "lcd",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": false,
-        "text": {}
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "gossipsub_mesh_peers_per_main_topic",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{topic_hash}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Mesh Peers",
-      "transparent": true,
-      "type": "bargauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2075,12 +3087,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 108
+        "h": 7,
+        "w": 5,
+        "x": 6,
+        "y": 85
       },
-      "id": 46,
+      "id": 29,
       "options": {
         "displayLabels": [
           "name"
@@ -2107,40 +3119,151 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (topic) (rate(gossipsub_mesh_metrics_by_topic{metric=\"MessagesDuplicates\",topic=~\"attester_slashing|beacon_aggregate_and_proof|beacon_block|proposer_slashing|signed_contribution_and_proof|voluntary_exit\"}[1m]))*12",
-          "instant": false,
+          "expr": "rate(gossipsub_unaccepted_messages_per_client[$__rate_interval])*12",
           "interval": "",
-          "legendFormat": "{{topic}}",
+          "legendFormat": "{{client}}",
           "refId": "A"
-        },
-        {
-          "datasource": "${DS___EXPR__}",
-          "expression": "A",
-          "hide": false,
-          "reducer": "sum",
-          "refId": "B",
-          "type": "reduce"
         }
       ],
-      "title": "Duplicates Filtered Per Slot",
+      "title": "Gossipsub Ignored Messages Per Client per Slot",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 12,
+        "y": 86
+      },
+      "id": 16,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "gossipsub_topic_peers_counts{hash!~\".*attester_slashing.*|.*beacon_aggregate_and_proof.*|.*beacon_block.*|.*proposer_slashing.*|.*voluntary_exit.*|.*sync_committee_contribution_and_proof.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Subscribed Peers Per Topic",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*beacon_attestation)",
+            "renamePattern": "beacon_attestation"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy.*)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*sync_committee)",
+            "renamePattern": "sync_committee"
+          }
+        }
+      ],
       "transparent": true,
       "type": "piechart"
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 30,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "label_values(process_virtual_memory_bytes,instance)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "Instance",
+        "options": [],
+        "query": {
+          "query": "label_values(process_virtual_memory_bytes,instance)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Lighthouse Network",
   "uid": "QCrwGdI7k",
-  "version": 2
+  "version": 4,
+  "weekStart": ""
 }
