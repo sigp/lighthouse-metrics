@@ -2804,7 +2804,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "libp2p_peer_connected_peers_total",
+          "expr": "libp2p_peers",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
