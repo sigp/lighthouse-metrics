@@ -83,7 +83,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1642462348268,
+  "iteration": 1646293943001,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -188,12 +188,12 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "libp2p_peers",
+          "expr": "libp2p_peers{instance=~\"$Instance\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Connected Peers",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -292,7 +292,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": false,
-          "expr": "nat_open",
+          "expr": "nat_open{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -359,7 +359,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=~\".*beacon_block.*\", instance=~\"$Instance\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -427,8 +427,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "libp2p_peers_per_client",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "libp2p_peers_per_client{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{Client}}",
@@ -494,16 +498,24 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "network_inbound_peers",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "network_inbound_peers{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "Inbound",
           "refId": "A"
         },
         {
-          "exemplar": true,
-          "expr": "network_outbound_peers",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "network_outbound_peers{instance=~\"$Instance\"}",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -592,10 +604,14 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(libp2p_total_bandwidth[$__rate_interval])",
+          "expr": "rate(libp2p_total_bandwidth{instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
-          "legendFormat": "bytes/s",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -679,8 +695,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(libp2p_inbound_bytes[1m])",
+          "expr": "rate(libp2p_inbound_bytes{instance=~\"$Instance\"}[1m])",
           "interval": "",
           "legendFormat": "bytes/s",
           "refId": "A"
@@ -766,8 +786,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(libp2p_outbound_bytes[$__rate_interval])",
+          "expr": "rate(libp2p_outbound_bytes{instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "bytes/s",
           "refId": "A"
@@ -828,8 +852,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "peer_score_per_client+100",
+          "expr": "peer_score_per_client{instance=~\"$Instance\"}+100",
           "interval": "",
           "legendFormat": "{{client}}",
           "refId": "A"
@@ -894,8 +922,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "sync_peers_per_status",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "sync_peers_per_status{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{sync_status}}",
@@ -983,10 +1015,14 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(libp2p_total_bandwidth[$__rate_interval]) + rate(discovery_sent_bytes[$__rate_interval]) + rate(discovery_recv_bytes[$__rate_interval])",
+          "expr": "rate(libp2p_total_bandwidth{instance=~\"$Instance\"}[$__rate_interval]) + rate(discovery_sent_bytes{instance=~\"$Instance\"}[$__rate_interval]) + rate(discovery_recv_bytes{instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
-          "legendFormat": "bytes/s",
+          "legendFormat": "{{instance}} bytes/s",
           "refId": "A"
         }
       ],
@@ -1071,8 +1107,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(discovery_recv_bytes[$__rate_interval])",
+          "expr": "rate(discovery_recv_bytes{instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "bytes/s",
           "refId": "A"
@@ -1159,8 +1199,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(discovery_sent_bytes[$__rate_interval])",
+          "expr": "rate(discovery_sent_bytes{instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "bytes/s",
           "refId": "A"
@@ -1171,12 +1215,101 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 15,
+        "y": 16
+      },
+      "id": 80,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "increase(libp2p_report_peer_msgs_total{instance=~\"$Instance\"}[1m])",
+          "interval": "",
+          "legendFormat": "{{msg}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Peer Penalty Events",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
       "description": "",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 24
       },
       "id": 49,
       "options": {
@@ -1245,7 +1378,7 @@
         "h": 7,
         "w": 10,
         "x": 0,
-        "y": 23
+        "y": 26
       },
       "id": 65,
       "options": {
@@ -1263,8 +1396,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "discovery_requests",
+          "expr": "discovery_requests{instance=~\"$Instance\"}",
           "interval": "",
           "legendFormat": "Requests/s",
           "refId": "A"
@@ -1336,7 +1473,7 @@
         "h": 7,
         "w": 10,
         "x": 10,
-        "y": 23
+        "y": 26
       },
       "id": 67,
       "options": {
@@ -1354,8 +1491,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "discovery_sessions",
+          "expr": "discovery_sessions{instance=~\"$Instance\"}",
           "interval": "",
           "legendFormat": "active sessions",
           "refId": "A"
@@ -1398,7 +1539,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 23
+        "y": 26
       },
       "id": 69,
       "options": {
@@ -1417,7 +1558,13 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "expr": "discovery_queue_size",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "discovery_queue_size{instance=~\"$Instance\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "Queued Discoveries",
           "refId": "A"
@@ -1433,7 +1580,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 33
       },
       "id": 48,
       "options": {
@@ -1513,7 +1660,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 32
+        "y": 35
       },
       "id": 51,
       "options": {
@@ -1530,8 +1677,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "peer_score_distribution",
+          "expr": "peer_score_distribution{instance=~\"$Instance\"}",
           "interval": "",
           "legendFormat": "{{position}}",
           "refId": "A"
@@ -1599,7 +1750,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 32
+        "y": 35
       },
       "id": 32,
       "options": {
@@ -1616,8 +1767,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "sum(rate(libp2p_rpc_errors_per_client{}[$__rate_interval]))",
+          "expr": "sum(rate(libp2p_rpc_errors_per_client{instance=~\"$Instance\"}[$__rate_interval]))",
           "instant": false,
           "interval": "",
           "legendFormat": "Errors Per Second",
@@ -1640,41 +1795,62 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
-          "mappings": []
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
       "gridPos": {
         "h": 7,
-        "w": 5,
+        "w": 11,
         "x": 0,
-        "y": 39
+        "y": 42
       },
       "id": 30,
       "options": {
-        "displayLabels": [
-          "name"
-        ],
         "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -1682,80 +1858,20 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "{rpc_error=~\"incomplete_stream|invalid_request|io_error\"}",
+          "expr": "rate(libp2p_rpc_errors_per_client{rpc_error!~\"timeout\", instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
-          "legendFormat": "{{client}}",
+          "legendFormat": "{{client}} - {{rpc_error}}",
           "refId": "A"
         }
       ],
       "title": "RPC Errors (Non timeout)",
       "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 5,
-        "x": 5,
-        "y": 39
-      },
-      "id": 28,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "libp2p_rpc_errors_per_client{rpc_error=~\"negotiation_timeout|stream_timeout\"}",
-          "interval": "",
-          "legendFormat": "{{client}}",
-          "refId": "A"
-        }
-      ],
-      "title": "RPC Timeouts Per Client",
-      "transparent": true,
-      "type": "piechart"
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -1812,7 +1928,7 @@
         "h": 8,
         "w": 13,
         "x": 11,
-        "y": 39
+        "y": 42
       },
       "id": 75,
       "options": {
@@ -1829,8 +1945,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(libp2p_rpc_requests_total[10m])",
+          "expr": "rate(libp2p_rpc_requests_total{instance=~\"$Instance\"}[10m])",
           "interval": "",
           "legendFormat": "{{type}}",
           "refId": "A"
@@ -1841,12 +1961,101 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 0,
+        "y": 49
+      },
+      "id": 28,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(libp2p_rpc_errors_per_client{rpc_error=~\"negotiation_timeout|stream_timeout\", instance=~\"$Instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{client}} -{{rpc_error}}",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Timeouts Per Client",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
       "description": "",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 56
       },
       "id": 9,
       "options": {
@@ -1939,7 +2148,7 @@
         "h": 6,
         "w": 10,
         "x": 0,
-        "y": 49
+        "y": 58
       },
       "id": 12,
       "options": {
@@ -1957,8 +2166,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "gossipsub_mesh_peer_counts{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}",
+          "expr": "gossipsub_mesh_peer_counts{hash=~\".*beacon_aggregate_and_proof.*|.*beacon_block.*|.*sync_committee_contribution_and_proof.*\", instance=~\"$Instance\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{hash}}",
@@ -2001,7 +2214,7 @@
         "h": 6,
         "w": 4,
         "x": 10,
-        "y": 49
+        "y": 58
       },
       "id": 38,
       "options": {
@@ -2020,8 +2233,12 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=~\".*beacon_block.*\", instance=~\"$Instance\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -2068,7 +2285,7 @@
         "h": 6,
         "w": 4,
         "x": 14,
-        "y": 49
+        "y": 58
       },
       "id": 37,
       "options": {
@@ -2087,8 +2304,12 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy\"}[$__rate_interval])*12",
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=~\".*beacon_aggregate_and_proof.*\", instance=~\"$Instance\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -2131,7 +2352,7 @@
         "h": 6,
         "w": 3,
         "x": 18,
-        "y": 49
+        "y": 58
       },
       "id": 44,
       "options": {
@@ -2155,7 +2376,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": false,
-          "expr": "sum(rate(gossipsub_invalid_messages_per_topic[$__rate_interval]))",
+          "expr": "sum(rate(gossipsub_invalid_messages_per_topic{instance=~\"$Instance\"}[$__rate_interval]))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{topic}}",
@@ -2198,7 +2419,7 @@
         "h": 6,
         "w": 3,
         "x": 21,
-        "y": 49
+        "y": 58
       },
       "id": 42,
       "options": {
@@ -2222,7 +2443,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "rate(gossipsub_memcache_misses_total[$__rate_interval])",
+          "expr": "rate(gossipsub_memcache_misses_total{instance=~\"$Instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -2259,7 +2480,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 55
+        "y": 64
       },
       "id": 14,
       "options": {
@@ -2283,7 +2504,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": false,
-          "expr": "rate(gossipsub_score_per_mesh_bucket{hash=\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy\"}[$__rate_interval])",
+          "expr": "rate(gossipsub_score_per_mesh_bucket{hash=~\".*beacon_aggregate_and_proof.*\", instance=~\"$Instance\"}[$__rate_interval])",
           "format": "heatmap",
           "instant": true,
           "interval": "",
@@ -2323,7 +2544,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 55
+        "y": 64
       },
       "id": 71,
       "options": {
@@ -2342,8 +2563,12 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(beacon_block_gossip_slot_start_delay_time_bucket[10m])*12",
+          "expr": "rate(beacon_block_gossip_slot_start_delay_time_bucket{instance=~\"$Instance\"}[10m])*12",
           "format": "heatmap",
           "instant": false,
           "interval": "",
@@ -2415,7 +2640,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 65
+        "y": 74
       },
       "id": 43,
       "options": {
@@ -2438,7 +2663,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "gossipsub_topic_iwant_msgs_total",
+          "expr": "rate(gossipsub_topic_iwant_msgs_total{instance=~\"$Instance\", hash=~\"/eth2/$Fork/.*\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "{{hash}}",
@@ -2466,6 +2691,20 @@
           "options": {
             "regex": "(.*/beacon_block)",
             "renamePattern": "beacon_block"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/beacon_attestation)",
+            "renamePattern": "beacon_attestation"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/sync_committee)",
+            "renamePattern": "sync_committee"
           }
         }
       ],
@@ -2527,7 +2766,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 65
+        "y": 74
       },
       "id": 73,
       "options": {
@@ -2544,8 +2783,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(beacon_block_gossip_slot_start_delay_time_sum[30s])/rate(beacon_block_gossip_slot_start_delay_time_count[30s])",
+          "expr": "rate(beacon_block_gossip_slot_start_delay_time_sum{instance=~\"$Instance\"}[30s])/rate(beacon_block_gossip_slot_start_delay_time_count{instance=~\"$Instance\"}[30s])",
           "interval": "",
           "legendFormat": "Block Delay",
           "refId": "A"
@@ -2614,7 +2857,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 73
+        "y": 82
       },
       "id": 46,
       "options": {
@@ -2632,8 +2875,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_topic_msg_recv_counts_unfiltered_total{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12 - rate(gossipsub_topic_msg_recv_counts_total{hash=~\"/eth2/afcaaba0/beacon_aggregate_and_proof/ssz_snappy|/eth2/afcaaba0/beacon_block/ssz_snappy\"}[$__rate_interval])*12",
+          "expr": "rate(gossipsub_topic_msg_recv_counts_unfiltered_total{hash=~\"/eth2/$Fork/beacon_aggregate_and_proof/ssz_snappy|/eth2/$Fork/beacon_block/ssz_snappy\", instance=~\"$Instance\"}[$__rate_interval])*12 - rate(gossipsub_topic_msg_recv_counts_total{hash=~\"/eth2/$Fork/beacon_aggregate_and_proof/ssz_snappy|/eth2/$Fork/beacon_block/ssz_snappy\", instance=~\"$Instance\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "{{hash}}",
@@ -2727,7 +2974,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 73
+        "y": 82
       },
       "id": 40,
       "options": {
@@ -2816,7 +3063,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 79
+        "y": 88
       },
       "id": 57,
       "options": {
@@ -2833,14 +3080,217 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_scoring_penalties_total[$__rate_interval])*12",
+          "expr": "rate(gossipsub_scoring_penalties_total{instance=~\"$Instance\"}[$__rate_interval])*12",
           "interval": "",
           "legendFormat": "{{penalty}}",
           "refId": "A"
         }
       ],
       "title": "Gossip Penalties Per Slot",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "ms",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 88
+      },
+      "id": 82,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(gossipsub_heartbeat_duration_sum{instance=~\"$Instance\"}[$__rate_interval]))/sum(rate(gossipsub_heartbeat_duration_count{instance=~\"$Instance\"}[$__rate_interval]))",
+          "interval": "",
+          "legendFormat": "{{Instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Heartbeat Duration",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 94
+      },
+      "id": 84,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(gossipsub_accepted_messages_per_topic_total{hash=~\"/eth2/$Fork/.*\", instance=~\"$Instance\"}[$__rate_interval])*12",
+          "interval": "",
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Accepted Messages Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/eth2/.{8}/)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
@@ -2870,7 +3320,7 @@
         "h": 7,
         "w": 4,
         "x": 12,
-        "y": 79
+        "y": 96
       },
       "id": 22,
       "options": {
@@ -2899,8 +3349,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "block_mesh_peers_per_client",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "block_mesh_peers_per_client{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{Client}}",
@@ -2937,7 +3391,7 @@
         "h": 7,
         "w": 4,
         "x": 16,
-        "y": 79
+        "y": 96
       },
       "id": 24,
       "options": {
@@ -2966,7 +3420,12 @@
       "pluginVersion": "8.1.3",
       "targets": [
         {
-          "expr": "beacon_aggregate_and_proof_mesh_peers_per_client",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "beacon_aggregate_and_proof_mesh_peers_per_client{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{Client}}",
@@ -2976,6 +3435,320 @@
       "title": "BeaconAggregateAndProof Mesh Peers",
       "transparent": true,
       "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 102
+      },
+      "id": 86,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(gossipsub_topic_msg_recv_bytes_total{hash=~\"/eth2/$Fork/.*\", instance=\"$Instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Recv Bytes per Topic",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/.*/)",
+            "renamePattern": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 12,
+        "y": 103
+      },
+      "id": 16,
+      "options": {
+        "displayLabels": [
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": false,
+          "expr": "gossipsub_topic_peers_counts{hash!~\".*attester_slashing.*|.*beacon_aggregate_and_proof.*|.*beacon_block.*|.*proposer_slashing.*|.*voluntary_exit.*|.*sync_committee_contribution_and_proof.*\", hash=~\"/eth2/$Fork/.*\", instance=~\"$Instance\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Subscribed Peers Per Topic",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*beacon_attestation)",
+            "renamePattern": "beacon_attestation"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy.*)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*sync_committee)",
+            "renamePattern": "sync_committee"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 110
+      },
+      "id": 87,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(gossipsub_topic_msg_sent_bytes_total{hash=~\"/eth2/$Fork/.*\", instance=\"$Instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{hash}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Sent Bytes per Topic",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(/ssz_snappy)",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*/.*/)",
+            "renamePattern": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -3002,7 +3775,7 @@
         "h": 7,
         "w": 5,
         "x": 0,
-        "y": 85
+        "y": 118
       },
       "id": 47,
       "options": {
@@ -3030,8 +3803,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_ignored_messages_per_topic_total[$__rate_interval])*12",
+          "expr": "rate(gossipsub_ignored_messages_per_topic_total{instance=~\"$Instance\"}[$__rate_interval])*12",
           "instant": false,
           "interval": "",
           "legendFormat": "{{hash}}",
@@ -3090,7 +3867,7 @@
         "h": 7,
         "w": 5,
         "x": 6,
-        "y": 85
+        "y": 118
       },
       "id": 29,
       "options": {
@@ -3118,110 +3895,18 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(gossipsub_unaccepted_messages_per_client[$__rate_interval])*12",
+          "expr": "rate(gossipsub_unaccepted_messages_per_client{instance=~\"$Instance\"}[$__rate_interval])*12",
           "interval": "",
           "legendFormat": "{{client}}",
           "refId": "A"
         }
       ],
       "title": "Gossipsub Ignored Messages Per Client per Slot",
-      "transparent": true,
-      "type": "piechart"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 7,
-        "x": 12,
-        "y": 86
-      },
-      "id": 16,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "value"
-          ]
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": false,
-          "expr": "gossipsub_topic_peers_counts{hash!~\".*attester_slashing.*|.*beacon_aggregate_and_proof.*|.*beacon_block.*|.*proposer_slashing.*|.*voluntary_exit.*|.*sync_committee_contribution_and_proof.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{hash}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Subscribed Peers Per Topic",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "(.*beacon_attestation)",
-            "renamePattern": "beacon_attestation"
-          }
-        },
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "(/ssz_snappy.*)",
-            "renamePattern": ""
-          }
-        },
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "(.*sync_committee)",
-            "renamePattern": "sync_committee"
-          }
-        }
-      ],
       "transparent": true,
       "type": "piechart"
     }
@@ -3238,18 +3923,40 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(process_virtual_memory_bytes,instance)",
+        "definition": "label_values(instance)",
         "hide": 0,
-        "includeAll": false,
-        "multi": false,
+        "includeAll": true,
+        "multi": true,
         "name": "Instance",
         "options": [],
         "query": {
-          "query": "label_values(process_virtual_memory_bytes,instance)",
+          "query": "label_values(instance)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "",
+        "regex": ".*5054$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "label_values(hash)",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Fork",
+        "options": [],
+        "query": {
+          "query": "label_values(hash)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/eth2/(.{8}).*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -3262,8 +3969,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Lighthouse Network",
+  "title": "Network",
   "uid": "QCrwGdI7k",
-  "version": 4,
+  "version": 13,
   "weekStart": ""
 }
