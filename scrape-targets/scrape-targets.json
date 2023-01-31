@@ -4,8 +4,8 @@
       "job": "nodes"
     },
     "targets": [
-      "localhost:5054",
-      "localhost:5064"
+      "host.docker.internal:5054",
+      "host.docker.internal:5064"
     ]
   }
 ]
