@@ -2256,7 +2256,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n### BN <-> VC Latency\n\nStats about BC<>VC Latency\n\n\n\n",
+        "content": "\n### BN <-> VC Latency\n\nStats about BN <-> VC Latency\n\n\n\n",
         "mode": "markdown"
       },
       "pluginVersion": "9.3.2",
