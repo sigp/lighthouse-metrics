@@ -3,10 +3,6 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -3364,7 +3360,7 @@
     ]
   },
   "timezone": "",
-  "title": "Validator Monitor 222",
+  "title": "Validator Monitor",
   "uid": "B8LIn0aGz",
   "version": 3,
   "weekStart": ""
