@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1902,
+  "id": 1903,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -36,7 +36,6 @@
       "type": "row"
     },
     {
-      "datasource": null,
       "gridPos": {
         "h": 10,
         "w": 9,
@@ -69,7 +68,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -157,7 +155,6 @@
       }
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -214,7 +211,6 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -275,7 +271,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -363,7 +358,6 @@
       }
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -420,7 +414,6 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -484,18 +477,290 @@
         "x": 0,
         "y": 14
       },
+      "id": 203,
+      "panels": [],
+      "title": "Missed blocks",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 204,
+      "links": [],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Displays the amount of missed blocks per validator in real-time.",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Displays the missed blocks per validator starting from the first validated epoch",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 17
+      },
+      "id": 205,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "editorMode": "code",
+          "expr": "validator_monitor_missed_blocks_total{}",
+          "instant": false,
+          "legendFormat": "{{validator}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Missed Blocks per Validator",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 17
+      },
+      "id": 206,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "editorMode": "code",
+          "expr": "validator_monitor_missed_non_finalized_blocks_total{} > 0",
+          "instant": false,
+          "legendFormat": "{{validator}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Missed Blocks per Validator at Non-finalized Epochs",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 207,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "editorMode": "code",
+          "expr": "validator_monitor_missed_non_finalized_blocks_total{}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{validator}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Missed Blocks per Validator Seen at Non-finalized Epochs",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
       "id": 201,
       "panels": [],
       "title": "Summary of Events in the Previous Epoch",
       "type": "row"
     },
     {
-      "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 25
       },
       "id": 179,
       "links": [],
@@ -523,7 +788,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -536,7 +800,7 @@
         "h": 10,
         "w": 6,
         "x": 0,
-        "y": 18
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 165,
@@ -615,7 +879,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -628,7 +891,7 @@
         "h": 5,
         "w": 10,
         "x": 6,
-        "y": 18
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 180,
@@ -707,7 +970,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -720,7 +982,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 181,
@@ -799,7 +1061,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -812,7 +1073,7 @@
         "h": 5,
         "w": 10,
         "x": 6,
-        "y": 23
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 168,
@@ -891,7 +1152,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -904,7 +1164,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 23
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 183,
@@ -983,7 +1243,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -996,7 +1255,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 28
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 184,
@@ -1075,7 +1334,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1088,7 +1346,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 28
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 185,
@@ -1167,7 +1425,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1180,7 +1437,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 28
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 186,
@@ -1260,7 +1517,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 43
       },
       "id": 200,
       "panels": [],
@@ -1268,12 +1525,11 @@
       "type": "row"
     },
     {
-      "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 44
       },
       "id": 187,
       "links": [],
@@ -1301,7 +1557,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1314,7 +1569,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 37
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 188,
@@ -1393,7 +1648,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1406,7 +1660,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 37
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 161,
@@ -1484,7 +1738,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1497,7 +1750,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 37
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 189,
@@ -1575,7 +1828,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1588,7 +1840,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 42
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 172,
@@ -1666,7 +1918,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1679,7 +1930,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 42
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 139,
@@ -1759,7 +2010,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 57
       },
       "id": 199,
       "panels": [],
@@ -1767,12 +2018,11 @@
       "type": "row"
     },
     {
-      "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 58
       },
       "id": 152,
       "links": [],
@@ -1800,7 +2050,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1813,7 +2062,7 @@
         "h": 10,
         "w": 7,
         "x": 0,
-        "y": 51
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 190,
@@ -1892,7 +2141,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1905,7 +2153,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 51
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 26,
@@ -1984,7 +2232,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1997,7 +2244,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 51
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 146,
@@ -2076,7 +2323,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2089,7 +2335,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 56
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 149,
@@ -2168,7 +2414,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2181,7 +2426,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 56
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 138,
@@ -2260,7 +2505,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2273,7 +2517,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 61
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 156,
@@ -2352,7 +2596,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2365,7 +2608,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 61
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 154,
@@ -2444,7 +2687,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2457,7 +2699,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 61
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 158,
@@ -2536,19 +2778,18 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 76
       },
       "id": 198,
       "title": "Real-Time Validator Message Delays",
       "type": "row"
     },
     {
-      "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 77
       },
       "id": 191,
       "links": [],
@@ -2576,7 +2817,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2589,7 +2829,7 @@
         "h": 10,
         "w": 7,
         "x": 0,
-        "y": 70
+        "y": 80
       },
       "hiddenSeries": false,
       "id": 141,
@@ -2673,7 +2913,6 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2693,7 +2932,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 70
+        "y": 80
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2780,7 +3019,6 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2800,7 +3038,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 70
+        "y": 80
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2887,7 +3125,6 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2907,7 +3144,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 75
+        "y": 85
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2994,7 +3231,6 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -3014,7 +3250,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 75
+        "y": 85
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3128,8 +3364,8 @@
     ]
   },
   "timezone": "",
-  "title": "Validator Monitor",
+  "title": "Validator Monitor 222",
   "uid": "B8LIn0aGz",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
