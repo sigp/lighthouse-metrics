@@ -1036,7 +1036,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "sum(rate(libp2p_bandwidth_bytes_total{instance=~\"$Instance\"}[$__rate_interval])) + sum(rate(discovery_sent_bytes{instance=~\"$Instance\"}[$__rate_interval])) + sum(rate(discovery_recv_bytes{instance=~\"$Instance\"}[$__rate_interval]))",
+              "expr": "sum(rate(discovery_bytes{instance=~\"$Instance\"}[$__rate_interval]))",
               "interval": "",
               "legendFormat": "{{instance}} bytes/s",
               "refId": "A"
@@ -1132,7 +1132,7 @@
               },
               "editorMode": "code",
               "exemplar": true,
-              "expr": "rate(discovery_recv_bytes{instance=~\"$Instance\"}[$__rate_interval])",
+              "expr": "sum(rate(discovery_bytes{instance=~\"$Instance\",direction=\"inbound\"}[$__rate_interval]))",
               "interval": "",
               "legendFormat": "bytes/s",
               "range": true,
@@ -1228,7 +1228,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "exemplar": true,
-              "expr": "rate(discovery_sent_bytes{instance=~\"$Instance\"}[$__rate_interval])",
+              "expr": "sum(rate(discovery_bytes{instance=~\"$Instance\",direction=\"outbound\"}[$__rate_interval]))",
               "interval": "",
               "legendFormat": "bytes/s",
               "refId": "A"
