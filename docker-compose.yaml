@@ -13,14 +13,16 @@ services:
               source: ./scrape-targets
               target: /prometheus/targets
         restart: always
-        network_mode: host
+        ports:
+            - 9090:9090
     grafana:
         build:
             context: grafana
         volumes:
             - grafana-data:/var/lib/grafana
         restart: always
-        network_mode: host
+        ports:
+            - 3000:3000
 
 volumes:
     grafana-data:
