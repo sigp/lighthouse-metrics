@@ -27,7 +27,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.1.2"
+      "version": "10.3.3"
     },
     {
       "type": "panel",
@@ -120,6 +120,7 @@
             "mode": "continuous-BlPu"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Peers",
@@ -133,6 +134,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -164,7 +166,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -266,7 +269,8 @@
                 "value": 1
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -289,22 +293,24 @@
           "fields": "",
           "values": true
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "nat_open{instance=~\"$Instance\"}",
           "instant": true,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}:{{protocol}}",
           "refId": "A"
         }
       ],
@@ -324,7 +330,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -342,7 +350,8 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "none",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -371,7 +380,7 @@
           }
         ]
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -415,13 +424,14 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "",
+      "description": "Number of Dependency Errors",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -435,6 +445,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -460,19 +471,12 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": ""
-              },
-              {
                 "color": "red",
-                "value": 0.3
-              },
-              {
-                "color": "#EAB839",
-                "value": 0.6
+                "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -482,7 +486,7 @@
         "x": 15,
         "y": 7
       },
-      "id": 36,
+      "id": 138,
       "options": {
         "legend": {
           "calcs": [],
@@ -495,24 +499,25 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=~\".*beacon_block.*\", instance=~\"$Instance\"}[$__rate_interval])*12",
-          "format": "time_series",
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "increase(dep_error_total{instance=~\"$Instance\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
-          "interval": "",
-          "legendFormat": "{{instance}}",
-          "refId": "A"
+          "legendFormat": "{{instance}}: {{target}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
         }
       ],
-      "title": "Blocks Per Slot",
+      "title": "Dependency Errors",
       "transparent": true,
       "type": "timeseries"
     },
@@ -527,6 +532,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -540,6 +546,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -570,7 +577,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -629,6 +637,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -642,6 +651,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -672,7 +682,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -731,6 +742,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -744,6 +756,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -774,7 +787,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -833,6 +847,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -846,6 +861,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -876,7 +892,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -936,6 +953,7 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -949,6 +967,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -976,7 +995,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1011,9 +1031,9 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(discovery_bytes{instance=~\"$Instance\",direction=\"inbound\"}[$__rate_interval]))",
+          "expr": "rate(discovery_bytes{instance=~\"$Instance\", direction=\"inbound\"}[$__rate_interval])",
           "interval": "",
-          "legendFormat": "bytes/s",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -1034,6 +1054,7 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1047,6 +1068,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1074,7 +1096,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1107,10 +1130,12 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(discovery_bytes{instance=~\"$Instance\",direction=\"outbound\"}[$__rate_interval]))",
+          "expr": "rate(discovery_bytes{instance=~\"$Instance\",direction=\"outbound\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "bytes/s",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1123,13 +1148,14 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Peers via client implementations",
+      "description": "Number of Dependency Warnings",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1143,6 +1169,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1160,8 +1187,6 @@
             }
           },
           "mappings": [],
-          "max": 100,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1174,17 +1199,18 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 9,
         "x": 15,
         "y": 14
       },
-      "id": 6,
+      "id": 137,
       "options": {
         "legend": {
           "calcs": [],
@@ -1197,25 +1223,25 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "8.1.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "disableTextWrap": false,
           "editorMode": "code",
-          "exemplar": true,
-          "expr": "libp2p_peers_per_client{instance=~\"$Instance\"}",
-          "format": "time_series",
+          "expr": "increase(dep_warn_total{instance=~\"$Instance\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
-          "interval": "",
-          "legendFormat": "{{Client}}:{{instance}}",
+          "legendFormat": "{{instance}}: {{target}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
-      "title": "Connected Clients",
+      "title": "Dependency Warnings",
       "transparent": true,
       "type": "timeseries"
     },
@@ -1231,6 +1257,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1244,6 +1271,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1273,7 +1301,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1324,6 +1353,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1337,6 +1367,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1366,7 +1397,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1418,6 +1450,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1431,6 +1464,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1460,7 +1494,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1510,13 +1545,14 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Peers that have dialed us",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1530,6 +1566,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1555,21 +1592,133 @@
                 "value": null
               },
               {
+                "color": "#6ED0E0",
+                "value": ""
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 0.3
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.6
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 9,
         "x": 15,
-        "y": 20
+        "y": 21
       },
-      "id": 2,
+      "id": 36,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "rate(gossipsub_topic_msg_recv_counts_total{hash=~\".*beacon_block.*\", instance=~\"$Instance\"}[$__rate_interval])*12",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Blocks Per Slot",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Peers via client implementations",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 27
+      },
+      "id": 6,
       "options": {
         "legend": {
           "calcs": [],
@@ -1591,32 +1740,16 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "network_inbound_peers{instance=~\"$Instance\"}",
+          "expr": "libp2p_peers_per_client{instance=~\"$Instance\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
-          "legendFormat": "Inbound",
+          "legendFormat": "{{Client}}:{{instance}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "network_outbound_peers{instance=~\"$Instance\"}",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "Outbound",
-          "range": true,
-          "refId": "B"
         }
       ],
-      "title": "Inbound/Outbound Connected Peers",
+      "title": "Connected Clients",
       "transparent": true,
       "type": "timeseries"
     },
@@ -1625,12 +1758,14 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "Peers that have dialed us",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1644,6 +1779,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1673,14 +1809,120 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
+        "h": 7,
+        "w": 8,
+        "x": 7,
+        "y": 27
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": true,
+          "expr": "sum by(direction) (libp2p_peers_multi{instance=~\"$Instance\"})",
+          "format": "time_series",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Inbound/Outbound Connected Peers",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 15,
         "y": 27
       },
       "id": 127,
@@ -1702,28 +1944,18 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "libp2p_tcp_peers{instance=~\"$Instance\"}",
+          "expr": "sum by(transport) (libp2p_peers_multi{instance=~\"$Instance\"})",
+          "fullMetaSearch": false,
           "hide": false,
+          "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "TCP: {{instance}}",
+          "legendFormat": "{{instance}}: {{transport}}",
           "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "builder",
-          "exemplar": true,
-          "expr": "libp2p_quic_peers{instance=~\"$Instance\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "QUIC: {{instance}}",
-          "range": true,
-          "refId": "B"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Connected Peers By Transport",
@@ -1755,6 +1987,7 @@
             "mode": "continuous-GrYlRd"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1768,6 +2001,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1795,7 +2029,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1850,6 +2085,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1863,6 +2099,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1894,7 +2131,8 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "short",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1962,7 +2200,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1989,7 +2228,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -2009,7 +2248,7 @@
       "type": "gauge"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2017,483 +2256,502 @@
         "y": 43
       },
       "id": 96,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "description": "Distribution of connected peer's score by quartile",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "area"
-                }
-              },
-              "mappings": [],
-              "max": 0,
-              "min": -25,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "light-orange",
-                    "value": -30
-                  },
-                  {
-                    "color": "transparent",
-                    "value": -20
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 43
-          },
-          "id": 51,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-              },
-              "exemplar": true,
-              "expr": "peer_score_distribution{instance=~\"$Instance\"}",
-              "interval": "",
-              "legendFormat": "{{position}}",
-              "refId": "A"
-            }
-          ],
-          "title": "Connected Peer Score Distribution",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 43
-          },
-          "id": 32,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "displayMode": "list",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-              },
-              "exemplar": true,
-              "expr": "sum(rate(libp2p_rpc_errors_per_client{instance=~\"$Instance\"}[$__rate_interval]))",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "Errors Per Second",
-              "refId": "A"
-            }
-          ],
-          "title": "RPC Error Rate",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 11,
-            "x": 0,
-            "y": 50
-          },
-          "id": 30,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-              },
-              "exemplar": true,
-              "expr": "rate(libp2p_rpc_errors_per_client{rpc_error!~\"timeout\", instance=~\"$Instance\"}[$__rate_interval])",
-              "interval": "",
-              "legendFormat": "{{client}} - {{rpc_error}}",
-              "refId": "A"
-            }
-          ],
-          "title": "RPC Errors (Non timeout)",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 13,
-            "x": 11,
-            "y": 50
-          },
-          "id": 75,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-              },
-              "exemplar": true,
-              "expr": "rate(libp2p_rpc_requests_total{instance=~\"$Instance\"}[10m])",
-              "interval": "",
-              "legendFormat": "{{type}}",
-              "refId": "A"
-            }
-          ],
-          "title": "10m Average RPC Requests per Second",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 11,
-            "x": 0,
-            "y": 57
-          },
-          "id": 28,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-              },
-              "exemplar": true,
-              "expr": "rate(libp2p_rpc_errors_per_client{rpc_error=~\"negotiation_timeout|stream_timeout\", instance=~\"$Instance\"}[$__rate_interval])",
-              "interval": "",
-              "legendFormat": "{{client}} -{{rpc_error}}",
-              "refId": "A"
-            }
-          ],
-          "title": "RPC Timeouts Per Client",
-          "transparent": true,
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "title": "RPC",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Distribution of connected peer's score by quartile",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "max": 0,
+          "min": -25,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": -30
+              },
+              {
+                "color": "transparent",
+                "value": -20
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 44
+      },
+      "id": 51,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "peer_score_distribution{instance=~\"$Instance\"}",
+          "interval": "",
+          "legendFormat": "{{position}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Connected Peer Score Distribution",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 44
+      },
+      "id": 32,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(libp2p_rpc_errors_per_client{instance=~\"$Instance\"}[$__rate_interval]))",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Errors Per Second",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Error Rate",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 0,
+        "y": 51
+      },
+      "id": 30,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(libp2p_rpc_errors_per_client{rpc_error!~\"timeout\", instance=~\"$Instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{client}} - {{rpc_error}}",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Errors (Non timeout)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 13,
+        "x": 11,
+        "y": 51
+      },
+      "id": 75,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(libp2p_rpc_requests_total{instance=~\"$Instance\"}[10m])",
+          "interval": "",
+          "legendFormat": "{{type}}",
+          "refId": "A"
+        }
+      ],
+      "title": "10m Average RPC Requests per Second",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 0,
+        "y": 58
+      },
+      "id": 28,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "rate(libp2p_rpc_errors_per_client{rpc_error=~\"negotiation_timeout|stream_timeout\", instance=~\"$Instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{client}} -{{rpc_error}}",
+          "refId": "A"
+        }
+      ],
+      "title": "RPC Timeouts Per Client",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "collapsed": false,
@@ -2501,7 +2759,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 65
       },
       "id": 98,
       "panels": [],
@@ -2520,6 +2778,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2533,6 +2792,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2584,7 +2844,8 @@
                 "value": 12
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -2592,7 +2853,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 45
+        "y": 66
       },
       "id": 12,
       "options": {
@@ -2669,7 +2930,8 @@
                 "value": 2
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -2677,7 +2939,7 @@
         "h": 6,
         "w": 3,
         "x": 12,
-        "y": 45
+        "y": 66
       },
       "id": 38,
       "options": {
@@ -2696,7 +2958,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -2743,7 +3005,8 @@
                 "value": 1000
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -2751,7 +3014,7 @@
         "h": 6,
         "w": 3,
         "x": 15,
-        "y": 45
+        "y": 66
       },
       "id": 37,
       "options": {
@@ -2770,7 +3033,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -2813,7 +3076,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -2821,7 +3085,7 @@
         "h": 6,
         "w": 3,
         "x": 18,
-        "y": 45
+        "y": 66
       },
       "id": 44,
       "options": {
@@ -2840,7 +3104,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -2883,7 +3147,8 @@
                 "value": 5
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -2891,7 +3156,7 @@
         "h": 6,
         "w": 3,
         "x": 21,
-        "y": 45
+        "y": 66
       },
       "id": 42,
       "options": {
@@ -2910,7 +3175,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -2947,7 +3212,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -2955,7 +3221,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 72
       },
       "id": 14,
       "options": {
@@ -2977,7 +3243,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -3017,7 +3283,8 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "none",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3025,7 +3292,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 61
+        "y": 82
       },
       "id": 71,
       "options": {
@@ -3047,7 +3314,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -3078,6 +3345,7 @@
             "mode": "continuous-GrYlRd"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3091,6 +3359,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -3116,7 +3385,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3124,7 +3394,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 61
+        "y": 82
       },
       "id": 73,
       "options": {
@@ -3170,6 +3440,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3183,6 +3454,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -3212,7 +3484,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3220,7 +3493,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 71
+        "y": 92
       },
       "id": 43,
       "options": {
@@ -3319,6 +3592,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3332,6 +3606,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -3361,7 +3636,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3369,7 +3645,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 71
+        "y": 92
       },
       "id": 46,
       "options": {
@@ -3441,6 +3717,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3454,6 +3731,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -3483,7 +3761,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3491,7 +3770,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 79
+        "y": 100
       },
       "id": 40,
       "options": {
@@ -3539,6 +3818,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3552,6 +3832,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -3581,7 +3862,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3589,7 +3871,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 79
+        "y": 100
       },
       "id": 57,
       "options": {
@@ -3634,6 +3916,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "ms",
@@ -3647,6 +3930,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -3676,7 +3960,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3684,7 +3969,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 87
+        "y": 108
       },
       "id": 82,
       "options": {
@@ -3727,9 +4012,10 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-BlYlRd"
+            "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3743,7 +4029,8 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "smooth",
+            "insertNulls": false,
+            "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -3766,9 +4053,15 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "Bps",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3776,13 +4069,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 87
+        "y": 108
       },
-      "id": 104,
+      "id": 124,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -3798,13 +4093,31 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "gossipsub_memcache_size{instance=~\"$Instance\"}",
-          "legendFormat": "{{instance}}",
+          "exemplar": true,
+          "expr": "rate(gossipsub_topic_msg_recv_bytes_total{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{hash}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Memcache Size",
+      "title": "Recv Bytes per Topic",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "/(/ssz_snappy)/",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "/(.*/.*/)/",
+            "renamePattern": ""
+          }
+        }
+      ],
       "transparent": true,
       "type": "timeseries"
     },
@@ -3824,7 +4137,8 @@
             "scaleDistribution": {
               "type": "linear"
             }
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3832,7 +4146,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 95
+        "y": 116
       },
       "id": 132,
       "maxDataPoints": 50,
@@ -3861,7 +4175,7 @@
           "layout": "auto"
         },
         "tooltip": {
-          "show": true,
+          "mode": "single",
           "showColorScale": false,
           "yHistogram": false
         },
@@ -3870,7 +4184,7 @@
           "reverse": false
         }
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -3906,7 +4220,8 @@
             "scaleDistribution": {
               "type": "linear"
             }
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -3914,7 +4229,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 95
+        "y": 116
       },
       "id": 131,
       "maxDataPoints": 50,
@@ -3943,7 +4258,7 @@
           "layout": "auto"
         },
         "tooltip": {
-          "show": true,
+          "mode": "single",
           "showColorScale": false,
           "yHistogram": false
         },
@@ -3952,7 +4267,7 @@
           "reverse": false
         }
       },
-      "pluginVersion": "9.1.2",
+      "pluginVersion": "10.3.3",
       "targets": [
         {
           "datasource": {
@@ -3984,6 +4299,7 @@
             "mode": "continuous-BlPu"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -3997,6 +4313,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -4023,7 +4340,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -4031,7 +4349,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 103
+        "y": 124
       },
       "id": 90,
       "options": {
@@ -4074,6 +4392,7 @@
             "mode": "continuous-BlPu"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -4087,6 +4406,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -4114,7 +4434,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -4122,7 +4443,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 103
+        "y": 124
       },
       "id": 89,
       "options": {
@@ -4168,6 +4489,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -4181,6 +4503,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -4211,245 +4534,16 @@
               }
             ]
           },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 111
-      },
-      "id": 87,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "gossipsub_topic_msg_last_sent_bytes{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}",
-          "interval": "",
-          "legendFormat": "{{hash}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Last Sent Message Bytes",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(/ssz_snappy)/",
-            "renamePattern": ""
-          }
-        },
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(.*/.*/)/",
-            "renamePattern": ""
-          }
-        }
-      ],
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 111
-      },
-      "id": 122,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "gossipsub_topic_msg_last_recv_bytes{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}",
-          "interval": "",
-          "legendFormat": "{{hash}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Last Recv Message Bytes",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(/ssz_snappy)/",
-            "renamePattern": ""
-          }
-        },
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(.*/.*/)/",
-            "renamePattern": ""
-          }
-        }
-      ],
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
+          "unit": "none",
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 11,
-        "x": 1,
-        "y": 120
+        "w": 12,
+        "x": 0,
+        "y": 132
       },
       "id": 123,
       "options": {
@@ -4513,6 +4607,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -4526,6 +4621,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -4556,130 +4652,16 @@
               }
             ]
           },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 120
-      },
-      "id": 125,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "gossipsub_topic_msg_last_recv_bytes_unfiltered{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}",
-          "interval": "",
-          "legendFormat": "{{hash}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Last Recv Message Bytes Unfiltered",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(/ssz_snappy)/",
-            "renamePattern": ""
-          }
-        },
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(.*/.*/)/",
-            "renamePattern": ""
-          }
-        }
-      ],
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "Bps"
+          "unit": "Bps",
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
         "h": 10,
         "w": 12,
-        "x": 0,
-        "y": 128
+        "x": 12,
+        "y": 132
       },
       "id": 121,
       "options": {
@@ -4743,6 +4725,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -4756,121 +4739,7 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "Bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 12,
-        "y": 129
-      },
-      "id": 124,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "rate(gossipsub_topic_msg_recv_bytes_total{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}[$__rate_interval])",
-          "interval": "",
-          "legendFormat": "{{hash}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Recv Bytes per Topic",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(/ssz_snappy)/",
-            "renamePattern": ""
-          }
-        },
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "/(.*/.*/)/",
-            "renamePattern": ""
-          }
-        }
-      ],
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -4900,15 +4769,41 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "beacon_aggregate_and_proof"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 139
+        "y": 142
       },
       "id": 84,
       "options": {
@@ -4934,7 +4829,7 @@
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": true,
-          "expr": "changes(gossipsub_accepted_messages_per_topic_total{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}[12s])",
+          "expr": "increase(gossipsub_accepted_messages_per_topic_total{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}[12s])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "interval": "",
@@ -4976,6 +4871,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -4989,6 +4885,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -5018,17 +4915,18 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 12,
+        "h": 8,
+        "w": 24,
         "x": 0,
-        "y": 147
+        "y": 150
       },
-      "id": 115,
+      "id": 135,
       "options": {
         "legend": {
           "calcs": [
@@ -5049,19 +4947,22 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "builder",
+          "disableTextWrap": false,
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "changes(gossipsub_mesh_peer_inclusion_events_total{hash=~\"/eth2/$Fork/beacon_block.*\", instance=~\"$Instance\"}[$__interval])",
+          "expr": "changes(gossipsub_rejected_messages_per_topic_total{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}[12s])",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "interval": "",
-          "legendFormat": "{{reason}}",
+          "legendFormat": "{{hash}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
-      "title": "Mesh Inclusions - Beacon Block",
+      "title": "Rejected Messages Per Slot",
       "transformations": [
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/eth2/.{8}/)/",
@@ -5069,7 +4970,6 @@
           }
         },
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/ssz_snappy)/",
@@ -5092,6 +4992,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -5105,6 +5006,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -5134,7 +5036,250 @@
                 "value": 80
               }
             ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 158
+      },
+      "id": 136,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "increase(gossipsub_ignored_messages_per_topic_total{hash=~\"/eth2/$Fork/.*\", hash=~\".*$Topic.*\", instance=~\"$Instance\"}[12s])",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "interval": "",
+          "legendFormat": "{{hash}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Ignored Messages Per Slot",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "/(/eth2/.{8}/)/",
+            "renamePattern": ""
           }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "/(/ssz_snappy)/",
+            "renamePattern": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 166
+      },
+      "id": 115,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "increase(gossipsub_mesh_peer_inclusion_events_total{hash=~\"/eth2/$Fork/beacon_block.*\", instance=~\"$Instance\"}[$__interval])",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{instance}}: {{reason}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Mesh Inclusions - Beacon Block",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "/(/eth2/.{8}/)/",
+            "renamePattern": ""
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "/(/ssz_snappy)/",
+            "renamePattern": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5142,7 +5287,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 147
+        "y": 166
       },
       "id": 117,
       "options": {
@@ -5165,19 +5310,18 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "changes(gossipsub_mesh_peer_inclusion_events_total{hash=~\"/eth2/$Fork/beacon_aggregate_and_proof.*\", instance=~\"$Instance\"}[$__interval])",
+          "expr": "increase(gossipsub_mesh_peer_inclusion_events_total{hash=~\"/eth2/$Fork/beacon_aggregate_and_proof.*\", instance=~\"$Instance\"}[$__interval])",
           "interval": "",
           "legendFormat": "{{reason}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Mesh Inclusions - Beacon Block",
+      "title": "Mesh Inclusions - Aggregate and Proof",
       "transformations": [
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/eth2/.{8}/)/",
@@ -5185,7 +5329,6 @@
           }
         },
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/ssz_snappy)/",
@@ -5208,6 +5351,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -5221,6 +5365,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -5250,7 +5395,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5258,7 +5404,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 154
+        "y": 173
       },
       "id": 118,
       "options": {
@@ -5281,9 +5427,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "changes(gossipsub_mesh_peer_churn_events_total{hash=~\"/eth2/$Fork/beacon_block.*\", instance=~\"$Instance\"}[$__interval])",
+          "expr": "increase(gossipsub_mesh_peer_churn_events_total{hash=~\"/eth2/$Fork/beacon_block.*\", instance=~\"$Instance\"}[$__interval])",
           "interval": "",
           "legendFormat": "{{reason}}",
           "range": true,
@@ -5293,7 +5439,6 @@
       "title": "Mesh Removals - Beacon Block",
       "transformations": [
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/eth2/.{8}/)/",
@@ -5301,7 +5446,6 @@
           }
         },
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/ssz_snappy)/",
@@ -5324,6 +5468,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -5337,6 +5482,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -5366,7 +5512,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5374,7 +5521,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 154
+        "y": 173
       },
       "id": 116,
       "options": {
@@ -5397,9 +5544,9 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "changes(gossipsub_mesh_peer_churn_events_total{hash=~\"/eth2/$Fork/beacon_aggregate_and_proof.*\", instance=~\"$Instance\"}[$__interval])",
+          "expr": "increase(gossipsub_mesh_peer_churn_events_total{hash=~\"/eth2/$Fork/beacon_aggregate_and_proof.*\", instance=~\"$Instance\"}[$__interval])",
           "interval": "",
           "legendFormat": "{{reason}}",
           "range": true,
@@ -5409,7 +5556,6 @@
       "title": "Mesh Removals - Aggregate and Proof",
       "transformations": [
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/eth2/.{8}/)/",
@@ -5417,7 +5563,6 @@
           }
         },
         {
-          "disabled": true,
           "id": "renameByRegex",
           "options": {
             "regex": "/(/ssz_snappy)/",
@@ -5445,7 +5590,8 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [],
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5453,7 +5599,7 @@
         "h": 9,
         "w": 6,
         "x": 0,
-        "y": 161
+        "y": 180
       },
       "id": 47,
       "options": {
@@ -5540,7 +5686,8 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [],
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5548,7 +5695,7 @@
         "h": 9,
         "w": 6,
         "x": 6,
-        "y": 161
+        "y": 180
       },
       "id": 29,
       "options": {
@@ -5611,7 +5758,8 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [],
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5619,7 +5767,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 161
+        "y": 180
       },
       "id": 22,
       "options": {
@@ -5684,7 +5832,8 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [],
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5692,7 +5841,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 161
+        "y": 180
       },
       "id": 24,
       "options": {
@@ -5751,6 +5900,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -5764,6 +5914,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -5793,7 +5944,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5801,7 +5953,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 170
+        "y": 189
       },
       "id": 16,
       "options": {
@@ -5825,7 +5977,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "gossipsub_topic_peers_counts{hash!~\".*attester_slashing.*|.*beacon_aggregate_and_proof.*|.*beacon_block.*|.*proposer_slashing.*|.*voluntary_exit.*|.*sync_committee_contribution_and_proof.*|.*bls_to_execution.*|.*light_client.*\", hash=~\"/eth2/$Fork/.*\", instance=~\"$Instance\"}",
+          "expr": "gossipsub_topic_peers_counts{hash!~\".*attester_slashing.*|.*beacon_aggregate_and_proof.*|.*beacon_block.*|.*proposer_slashing.*|.*voluntary_exit.*|.*sync_committee_contribution_and_proof.*|.*bls_to_execution.*|.*light_client.*|.*blob_sidecar.*|\", hash=~\"/eth2/$Fork/.*\", instance=~\"$Instance\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -5873,6 +6025,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -5886,6 +6039,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -5917,7 +6071,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -5925,7 +6080,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 178
+        "y": 197
       },
       "id": 134,
       "options": {
@@ -5972,6 +6127,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -5985,6 +6141,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -6014,7 +6171,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -6022,7 +6180,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 185
+        "y": 204
       },
       "id": 133,
       "options": {
@@ -6056,9 +6214,8 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 37,
-  "style": "dark",
+  "refresh": "5s",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -6132,13 +6289,13 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Network",
   "uid": "QCrwGdI7ka",
-  "version": 5,
+  "version": 16,
   "weekStart": ""
 }
