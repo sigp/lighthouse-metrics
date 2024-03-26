@@ -3,7 +3,6 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -13,269 +12,60 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 1903,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
       },
+      "id": 202,
+      "panels": [],
+      "title": "Lighthouse Validator Monitor",
+      "type": "row"
+    },
+    {
       "gridPos": {
         "h": 10,
         "w": 9,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 46,
       "links": [],
       "options": {
-        "content": "\n# Lighthouse Validator Monitor\n\nMetrics collected from a Lighthouse Beacon Node.\n\n\n\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Metrics collected from a Lighthouse Beacon Node.\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.6",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 7,
-        "x": 9,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 135,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.6",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "validator_monitor_validators_total",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Monitored Validators Total",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:140",
-          "decimals": 0,
-          "format": "none",
-          "label": "Validators",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:141",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 16,
-        "y": 0
-      },
-      "id": 193,
-      "links": [],
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.3.6",
-      "targets": [
-        {
-          "expr": "sum(validator_monitor_active)",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Active Validators",
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 20,
-        "y": 0
-      },
-      "id": 195,
-      "links": [],
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.3.6",
-      "targets": [
-        {
-          "expr": "sum(validator_monitor_slashed)",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Slashed Validators",
-      "type": "gauge"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -286,7 +76,7 @@
         "h": 6,
         "w": 7,
         "x": 9,
-        "y": 7
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 192,
@@ -307,7 +97,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -317,6 +107,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_balance_gwei",
           "format": "time_series",
           "interval": "",
@@ -326,9 +117,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Validator Balance",
       "tooltip": {
         "shared": true,
@@ -337,9 +126,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -350,31 +137,225 @@
           "format": "none",
           "label": "Gwei",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "id": 193,
+      "links": [],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "expr": "sum(validator_monitor_active)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Validators",
+      "type": "gauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "id": 195,
+      "links": [],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "expr": "sum(validator_monitor_slashed)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Slashed Validators",
+      "type": "gauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 9,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 135,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.0.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": null,
+          "expr": "validator_monitor_validators_total",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Monitored Validators Total",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:140",
+          "decimals": 0,
+          "format": "none",
+          "label": "Validators",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:141",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
           "links": [],
           "mappings": [],
           "thresholds": {
@@ -397,11 +378,12 @@
         "h": 6,
         "w": 4,
         "x": 16,
-        "y": 7
+        "y": 8
       },
       "id": 194,
       "links": [],
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -412,9 +394,10 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "targets": [
         {
+          "datasource": null,
           "expr": "sum(validator_monitor_exited)",
           "format": "time_series",
           "interval": "",
@@ -423,17 +406,12 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Exited Validators",
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": [],
           "mappings": [],
           "thresholds": {
@@ -456,11 +434,12 @@
         "h": 6,
         "w": 4,
         "x": 20,
-        "y": 7
+        "y": 8
       },
       "id": 196,
       "links": [],
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -471,9 +450,10 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "targets": [
         {
+          "datasource": null,
           "expr": "sum(validator_monitor_withdrawable)",
           "format": "time_series",
           "interval": "",
@@ -482,48 +462,330 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Withdrawable Validators",
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 203,
+      "panels": [],
+      "title": "Missed blocks",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 204,
+      "links": [],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Displays the amount of missed blocks per validator in real-time.",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Displays the missed blocks per validator starting from the first validated epoch",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
         },
         "overrides": []
       },
       "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 17
+      },
+      "id": 205,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "editorMode": "code",
+          "expr": "validator_monitor_missed_blocks_total{}",
+          "instant": false,
+          "legendFormat": "{{validator}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Missed Blocks per Validator",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 17
+      },
+      "id": 206,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "editorMode": "code",
+          "expr": "validator_monitor_missed_non_finalized_blocks_total{} > 0",
+          "instant": false,
+          "legendFormat": "{{validator}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Missed Blocks per Validator at Non-finalized Epochs",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 207,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "editorMode": "code",
+          "expr": "validator_monitor_missed_non_finalized_blocks_total{}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{validator}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Missed Blocks per Validator Seen at Non-finalized Epochs",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 201,
+      "panels": [],
+      "title": "Summary of Events in the Previous Epoch",
+      "type": "row"
+    },
+    {
+      "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 25
       },
       "id": 179,
       "links": [],
       "options": {
-        "content": "\n## Summary of Events in the Previous Epoch\n\nContains the summary of validator events in the previous epoch. These figures can be used to monitor the performance and online-ness of specific validators.\n\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Contains the summary of validator events in the previous epoch. These figures can be used to monitor the performance and online-ness of specific validators.\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.6",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -534,7 +796,7 @@
         "h": 10,
         "w": 6,
         "x": 0,
-        "y": 16
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 165,
@@ -555,7 +817,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -565,6 +827,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_attestation_block_inclusions",
           "format": "time_series",
           "interval": "",
@@ -574,9 +837,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Attestation included in Block",
       "tooltip": {
         "shared": true,
@@ -585,9 +846,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -598,35 +857,26 @@
           "format": "none",
           "label": "Block Inclusions",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -637,7 +887,7 @@
         "h": 5,
         "w": 10,
         "x": 6,
-        "y": 16
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 180,
@@ -658,7 +908,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -668,6 +918,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_attestations_total",
           "format": "time_series",
           "interval": "",
@@ -677,9 +928,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Unagg Attestations Seen",
       "tooltip": {
         "shared": true,
@@ -688,9 +937,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -701,35 +948,26 @@
           "format": "none",
           "label": "Attestation",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -740,7 +978,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 16
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 181,
@@ -761,7 +999,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -771,6 +1009,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_aggregates_total",
           "format": "time_series",
           "interval": "",
@@ -780,9 +1019,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Aggregate Attestations Seen",
       "tooltip": {
         "shared": true,
@@ -791,9 +1028,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -804,35 +1039,26 @@
           "format": "none",
           "label": "SignedAggregateAndProof",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -843,7 +1069,7 @@
         "h": 5,
         "w": 10,
         "x": 6,
-        "y": 21
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 168,
@@ -864,7 +1090,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -874,6 +1100,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_beacon_blocks_total",
           "format": "time_series",
           "interval": "",
@@ -883,9 +1110,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Blocks",
       "tooltip": {
         "shared": true,
@@ -894,9 +1119,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -907,35 +1130,26 @@
           "format": "none",
           "label": "BeaconBlock",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -946,7 +1160,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 21
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 183,
@@ -967,7 +1181,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -977,6 +1191,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_attestation_aggregate_inclusions",
           "format": "time_series",
           "interval": "",
@@ -986,9 +1201,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Attestation included in Aggregate",
       "tooltip": {
         "shared": true,
@@ -997,9 +1210,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1010,35 +1221,26 @@
           "format": "none",
           "label": "Aggregate Inclusions",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1049,7 +1251,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 26
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 184,
@@ -1070,7 +1272,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1080,6 +1282,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_exits_total",
           "format": "time_series",
           "interval": "",
@@ -1089,9 +1292,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Voluntary Exits Seen",
       "tooltip": {
         "shared": true,
@@ -1100,9 +1301,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1113,35 +1312,26 @@
           "format": "none",
           "label": "VoluntaryExit",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1152,7 +1342,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 26
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 185,
@@ -1173,7 +1363,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1183,6 +1373,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_proposer_slashings_total",
           "format": "time_series",
           "interval": "",
@@ -1192,9 +1383,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Proposer Slashing Seen",
       "tooltip": {
         "shared": true,
@@ -1203,9 +1392,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1216,35 +1403,26 @@
           "format": "none",
           "label": "ProposerSlashing",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1255,7 +1433,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 26
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 186,
@@ -1276,7 +1454,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1286,6 +1464,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_attester_slashings_total",
           "format": "time_series",
           "interval": "",
@@ -1295,9 +1474,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Attester Slashing Seen",
       "tooltip": {
         "shared": true,
@@ -1306,9 +1483,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1319,62 +1494,67 @@
           "format": "none",
           "label": "AttesterSlashing",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 43
       },
+      "id": 200,
+      "panels": [],
+      "title": "Minimum Message Delays in the Previous Epoch",
+      "type": "row"
+    },
+    {
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 44
       },
       "id": 187,
       "links": [],
       "options": {
-        "content": "\n## Minimum Message Delays in the Previous Epoch\n\nThese are the delays between when a message was due and when we recieved it. The values displayed here are the minimum delays per validator.\n\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "These are the delays between when a message was due and when we recieved it. The values displayed here are the minimum delays per validator.\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.6",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1385,7 +1565,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 34
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 188,
@@ -1406,7 +1586,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1416,6 +1596,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_prev_epoch_attestation_block_min_inclusion_distance",
           "format": "time_series",
           "instant": false,
@@ -1426,9 +1607,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Min Attestation Inclusion Delay (Slots)",
       "tooltip": {
         "shared": true,
@@ -1437,9 +1616,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1449,35 +1626,26 @@
           "format": "short",
           "label": "Slots",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:623",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1488,7 +1656,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 34
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 161,
@@ -1509,7 +1677,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1519,6 +1687,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_prev_epoch_attestations_min_delay_seconds_sum[30s])\n/\nrate(validator_monitor_prev_epoch_attestations_min_delay_seconds_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -1529,9 +1698,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Min Unagg. Attestation Delay",
       "tooltip": {
         "shared": true,
@@ -1540,9 +1707,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1550,37 +1715,27 @@
         {
           "$$hashKey": "object:1794",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1795",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1591,7 +1746,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 34
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 189,
@@ -1612,7 +1767,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1622,6 +1777,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_prev_epoch_beacon_blocks_min_delay_seconds_sum[30s])\n/\nrate(validator_monitor_prev_epoch_beacon_blocks_min_delay_seconds_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -1632,9 +1788,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Min Block Delay",
       "tooltip": {
         "shared": true,
@@ -1643,9 +1797,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1653,37 +1805,27 @@
         {
           "$$hashKey": "object:1794",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1795",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1694,7 +1836,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 39
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 172,
@@ -1715,7 +1857,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1725,6 +1867,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_prev_epoch_aggregates_min_delay_seconds_sum[30s])\n/\nrate(validator_monitor_prev_epoch_aggregates_min_delay_second_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -1735,9 +1878,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Prev Epoch Min Aggregate Attestation Delay",
       "tooltip": {
         "shared": true,
@@ -1746,9 +1887,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1756,37 +1895,27 @@
         {
           "$$hashKey": "object:1794",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1795",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1797,7 +1926,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 39
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 139,
@@ -1818,7 +1947,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1828,6 +1957,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_attestation_in_block_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -1837,9 +1967,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Attestation Inclusion in a Block per Minute",
       "tooltip": {
         "shared": true,
@@ -1848,9 +1976,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1861,62 +1987,67 @@
           "format": "none",
           "label": "Block Inclusions",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
       },
+      "id": 199,
+      "panels": [],
+      "title": "Real-Time Validator Events",
+      "type": "row"
+    },
+    {
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 58
       },
       "id": 152,
       "links": [],
       "options": {
-        "content": "\n## Real-Time Validator Events\n\nDisplays events happening per validator in real-time.\n\n\n\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Displays events happening per validator in real-time.\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.6",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1927,7 +2058,7 @@
         "h": 10,
         "w": 7,
         "x": 0,
-        "y": 47
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 190,
@@ -1948,7 +2079,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1958,6 +2089,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_attestation_in_block_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -1967,9 +2099,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Attestation inclusion in Block per Minute",
       "tooltip": {
         "shared": true,
@@ -1978,9 +2108,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1991,35 +2119,26 @@
           "format": "none",
           "label": "Block Inclusions",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2030,7 +2149,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 47
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 26,
@@ -2051,7 +2170,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2061,6 +2180,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_unaggregated_attestation_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2070,9 +2190,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Unaggregated Attestations Seen per Minute",
       "tooltip": {
         "shared": true,
@@ -2081,9 +2199,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2094,35 +2210,26 @@
           "format": "none",
           "label": "Attestation",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2133,7 +2240,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 47
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 146,
@@ -2154,7 +2261,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2164,6 +2271,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_aggregated_attestation_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2173,9 +2281,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Aggregated Attestations Seen per Minute",
       "tooltip": {
         "shared": true,
@@ -2184,9 +2290,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2197,35 +2301,26 @@
           "format": "none",
           "label": "SignedAggregateAndProof",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2236,7 +2331,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 52
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 149,
@@ -2257,7 +2352,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2267,6 +2362,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_beacon_block_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2276,9 +2372,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Beacon Blocks Seen per Minute",
       "tooltip": {
         "shared": true,
@@ -2287,9 +2381,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2300,35 +2392,26 @@
           "format": "none",
           "label": "BeaconBlock",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2339,7 +2422,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 52
+        "y": 66
       },
       "hiddenSeries": false,
       "id": 138,
@@ -2360,7 +2443,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2370,6 +2453,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_attestation_in_aggregate_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2379,9 +2463,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Attestation inclusion in Aggregate per Minute",
       "tooltip": {
         "shared": true,
@@ -2390,9 +2472,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2403,35 +2483,26 @@
           "format": "none",
           "label": "Aggregate Inclusions",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2442,7 +2513,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 57
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 156,
@@ -2463,7 +2534,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2473,6 +2544,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_exit_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2482,9 +2554,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Voluntary Exits Seen per Minute",
       "tooltip": {
         "shared": true,
@@ -2493,9 +2563,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2506,35 +2574,26 @@
           "format": "none",
           "label": "VoluntaryExit",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2545,7 +2604,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 57
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 154,
@@ -2566,7 +2625,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2576,6 +2635,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_proposer_slashing_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2585,9 +2645,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Proposer Slashing Seen per Minute",
       "tooltip": {
         "shared": true,
@@ -2596,9 +2654,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2609,35 +2665,26 @@
           "format": "none",
           "label": "ProposerSlashing",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2648,7 +2695,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 57
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 158,
@@ -2669,7 +2716,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2679,6 +2726,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "increase(validator_monitor_attester_slashing_total[1m])",
           "format": "time_series",
           "interval": "",
@@ -2688,9 +2736,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Attester Slashing Seen per Minute",
       "tooltip": {
         "shared": true,
@@ -2699,9 +2745,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2712,62 +2756,65 @@
           "format": "none",
           "label": "AttesterSlashing",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:352",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 76
       },
+      "id": 198,
+      "title": "Real-Time Validator Message Delays",
+      "type": "row"
+    },
+    {
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 77
       },
       "id": 191,
       "links": [],
       "options": {
-        "content": "\n## Real-Time Validator Message Delays\n\nDisplays message delays per validator in real-time.\n\n\n\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Displays message delays per validator in real-time.\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "7.3.6",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": null,
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2778,7 +2825,7 @@
         "h": 10,
         "w": 7,
         "x": 0,
-        "y": 65
+        "y": 80
       },
       "hiddenSeries": false,
       "id": 141,
@@ -2799,7 +2846,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "10.0.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2809,6 +2856,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "validator_monitor_attestation_in_block_delay_slots",
           "format": "time_series",
           "instant": false,
@@ -2819,9 +2867,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Attestation Inclusion Delay (Slots)",
       "tooltip": {
         "shared": true,
@@ -2830,9 +2876,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2842,31 +2886,21 @@
           "format": "short",
           "label": "Slots",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:623",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
+      "cards": {},
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
@@ -2875,11 +2909,18 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
         },
         "overrides": []
       },
@@ -2887,7 +2928,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 65
+        "y": 80
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2897,10 +2938,48 @@
         "show": false
       },
       "links": [],
-      "pluginVersion": "7.3.6",
+      "options": {
+        "calculate": true,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Oranges",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.0.2",
       "reverseYBuckets": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_unaggregated_attestation_delay_seconds_sum[30s])\n/\nrate(validator_monitor_unaggregated_attestation_delay_seconds_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -2910,8 +2989,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Unaggregated Attestation Delay Times",
       "tooltip": {
         "show": true,
@@ -2921,27 +2998,15 @@
       "xAxis": {
         "show": true
       },
-      "xBucketNumber": null,
-      "xBucketSize": null,
       "yAxis": {
-        "decimals": null,
         "format": "s",
         "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
+        "show": true
       },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "yBucketBound": "auto"
     },
     {
-      "cacheTimeout": null,
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
+      "cards": {},
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
@@ -2950,11 +3015,18 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
         },
         "overrides": []
       },
@@ -2962,7 +3034,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 65
+        "y": 80
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -2972,10 +3044,48 @@
         "show": false
       },
       "links": [],
-      "pluginVersion": "7.3.6",
+      "options": {
+        "calculate": true,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Oranges",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.0.2",
       "reverseYBuckets": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_beacon_block_delay_seconds_sum[30s])\n/\nrate(validator_monitor_beacon_block_delay_seconds_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -2985,8 +3095,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Beacon Block Delay Times",
       "tooltip": {
         "show": true,
@@ -2996,27 +3104,15 @@
       "xAxis": {
         "show": true
       },
-      "xBucketNumber": null,
-      "xBucketSize": null,
       "yAxis": {
-        "decimals": null,
         "format": "s",
         "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
+        "show": true
       },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "yBucketBound": "auto"
     },
     {
-      "cacheTimeout": null,
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
+      "cards": {},
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
@@ -3025,11 +3121,18 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
         },
         "overrides": []
       },
@@ -3037,7 +3140,7 @@
         "h": 5,
         "w": 9,
         "x": 7,
-        "y": 70
+        "y": 85
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3047,10 +3150,48 @@
         "show": false
       },
       "links": [],
-      "pluginVersion": "7.3.6",
+      "options": {
+        "calculate": true,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Oranges",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.0.2",
       "reverseYBuckets": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_aggregated_attestation_delay_seconds_sum[30s])\n/\nrate(validator_monitor_aggregated_attestation_delay_seconds_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -3060,8 +3201,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Aggregated Attestation Delay Times",
       "tooltip": {
         "show": true,
@@ -3071,27 +3210,15 @@
       "xAxis": {
         "show": true
       },
-      "xBucketNumber": null,
-      "xBucketSize": null,
       "yAxis": {
-        "decimals": null,
         "format": "s",
         "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
+        "show": true
       },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "yBucketBound": "auto"
     },
     {
-      "cacheTimeout": null,
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
+      "cards": {},
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
@@ -3100,11 +3227,18 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
         },
         "overrides": []
       },
@@ -3112,7 +3246,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 70
+        "y": 85
       },
       "heatmap": {},
       "hideZeroBuckets": false,
@@ -3122,10 +3256,48 @@
         "show": false
       },
       "links": [],
-      "pluginVersion": "7.3.6",
+      "options": {
+        "calculate": true,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Oranges",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.0.2",
       "reverseYBuckets": false,
       "targets": [
         {
+          "datasource": null,
           "expr": "rate(validator_monitor_attestation_in_aggregate_delay_seconds_sum[30s])\n/\nrate(validator_monitor_attestation_in_aggregate_delay_seconds_count[30s])",
           "format": "time_series",
           "instant": false,
@@ -3135,8 +3307,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Inclusion in Attestation Delay",
       "tooltip": {
         "show": true,
@@ -3146,24 +3316,16 @@
       "xAxis": {
         "show": true
       },
-      "xBucketNumber": null,
-      "xBucketSize": null,
       "yAxis": {
-        "decimals": null,
         "format": "s",
         "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
+        "show": true
       },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "yBucketBound": "auto"
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 26,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -3200,5 +3362,6 @@
   "timezone": "",
   "title": "Validator Monitor",
   "uid": "B8LIn0aGz",
-  "version": 26
+  "version": 27,
+  "weekStart": ""
 }
