@@ -2800,7 +2800,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(libp2p_total_bandwidth[1m])",
+          "expr": "sum(rate(libp2p_bandwidth_bytes_total[1m]))",
           "legendFormat": "bytes/s",
           "refId": "A"
         }
@@ -2892,7 +2892,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(libp2p_inbound_bytes[1m])",
+          "expr": "sum(rate(libp2p_bandwidth_bytes_total{direction=\"Inbound\"}[1m]))",
           "legendFormat": "bytes/s",
           "refId": "A"
         }
@@ -2984,7 +2984,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(libp2p_outbound_bytes[1m])",
+          "expr": "sum(rate(libp2p_bandwidth_bytes_total{direction=\"Outbound\"}[1m]))",
           "legendFormat": "bytes/s",
           "refId": "A"
         }
