@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 56,
+  "id": 29,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -290,7 +290,8 @@
     "list": [
       {
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
         },
         "filters": [],
         "hide": 0,
@@ -309,6 +310,6 @@
   "timezone": "",
   "title": "Attestation Simulator",
   "uid": "b27be6be-6d0d-41da-b10e-7506732b9b8b",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
