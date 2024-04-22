@@ -1,4 +1,41 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.1"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -18,13 +55,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 32,
+  "id": null,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 6,
@@ -47,7 +84,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -58,7 +95,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -139,7 +176,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_seconds_sum[5m])\n/\nrate(beacon_block_processing_seconds_count[5m])",
           "format": "time_series",
@@ -154,7 +191,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 2,
@@ -177,7 +214,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -188,7 +225,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 2,
@@ -211,7 +248,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -222,7 +259,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -303,7 +340,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_db_read_seconds_sum[5m])\n/\nrate(beacon_block_processing_db_read_seconds_count[5m])",
           "format": "time_series",
@@ -317,7 +354,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -398,7 +435,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_db_write_seconds_sum[5m])\n/\nrate(beacon_block_processing_db_write_seconds_count[5m])",
           "format": "time_series",
@@ -412,7 +449,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -494,7 +531,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_committee_building_seconds_sum[5m])\n/\nrate(beacon_block_processing_committee_building_seconds_count[5m])",
           "format": "time_series",
@@ -508,7 +545,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 2,
@@ -531,7 +568,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -542,7 +579,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 2,
@@ -565,7 +602,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -576,7 +613,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -658,7 +695,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_core_seconds_sum[5m])\n/\nrate(beacon_block_processing_core_seconds_count[5m])",
           "format": "time_series",
@@ -672,7 +709,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -754,7 +791,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_state_root_seconds_sum[5m])\n/\nrate(beacon_block_processing_state_root_seconds_count[5m])",
           "format": "time_series",
@@ -768,7 +805,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 3,
@@ -791,7 +828,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -802,7 +839,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 3,
@@ -825,7 +862,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -841,7 +878,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -885,7 +922,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_fork_choice_register_seconds_sum[5m])\n/\nrate(beacon_block_processing_fork_choice_register_seconds_count[5m])",
           "format": "time_series",
@@ -931,7 +968,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -975,7 +1012,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "rate(beacon_block_processing_fork_choice_find_head_seconds_sum[5m])\n/\nrate(beacon_block_processing_fork_choice_find_head_seconds_count[5m])",
           "format": "time_series",
