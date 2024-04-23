@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.0.3"
+      "version": "10.4.1"
     },
     {
       "type": "panel",
@@ -89,6 +89,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -102,6 +103,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -144,7 +146,6 @@
         "y": 1
       },
       "id": 41,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -188,6 +189,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -201,6 +203,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -243,7 +246,6 @@
         "y": 1
       },
       "id": 17,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -287,6 +289,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -300,6 +303,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -342,7 +346,6 @@
         "y": 1
       },
       "id": 16,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -386,6 +389,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -399,6 +403,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -441,7 +446,6 @@
         "y": 7
       },
       "id": 18,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -485,6 +489,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -498,6 +503,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -540,7 +546,6 @@
         "y": 7
       },
       "id": 20,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -584,6 +589,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -597,6 +603,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -639,7 +646,6 @@
         "y": 7
       },
       "id": 19,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -702,7 +708,6 @@
         "y": 13
       },
       "id": 72,
-      "links": [],
       "options": {
         "displayLabels": [
           "percent"
@@ -821,7 +826,6 @@
         "y": 13
       },
       "id": 73,
-      "links": [],
       "options": {
         "displayLabels": [
           "percent"
@@ -891,6 +895,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -904,6 +909,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -926,7 +932,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -945,7 +952,6 @@
         "y": 22
       },
       "id": 9,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -989,6 +995,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1002,6 +1009,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1024,7 +1032,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1043,7 +1052,6 @@
         "y": 22
       },
       "id": 10,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1087,6 +1095,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1100,6 +1109,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1122,7 +1132,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1141,7 +1152,6 @@
         "y": 22
       },
       "id": 11,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1185,6 +1195,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1198,6 +1209,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1220,7 +1232,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1239,7 +1252,6 @@
         "y": 22
       },
       "id": 12,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1337,7 +1349,6 @@
         "y": 27
       },
       "id": 5,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1435,7 +1446,6 @@
         "y": 27
       },
       "id": 2,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1533,7 +1543,6 @@
         "y": 27
       },
       "id": 6,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1631,7 +1640,6 @@
         "y": 27
       },
       "id": 8,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1729,7 +1737,6 @@
         "y": 32
       },
       "id": 4,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1827,7 +1834,6 @@
         "y": 32
       },
       "id": 7,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -1925,7 +1931,6 @@
         "y": 32
       },
       "id": 3,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -2023,7 +2028,6 @@
         "y": 32
       },
       "id": 66,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4078,7 +4082,6 @@
         "y": 69
       },
       "id": 34,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4190,7 +4193,6 @@
         "y": 69
       },
       "id": 48,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4302,7 +4304,6 @@
         "y": 69
       },
       "id": 27,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4414,7 +4415,6 @@
         "y": 69
       },
       "id": 49,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4526,7 +4526,6 @@
         "y": 74
       },
       "id": 35,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4638,7 +4637,6 @@
         "y": 74
       },
       "id": 33,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4750,7 +4748,6 @@
         "y": 74
       },
       "id": 26,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4862,7 +4859,6 @@
         "y": 74
       },
       "id": 42,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -4974,7 +4970,6 @@
         "y": 79
       },
       "id": 28,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5086,7 +5081,6 @@
         "y": 79
       },
       "id": 31,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5198,7 +5192,6 @@
         "y": 79
       },
       "id": 30,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5310,7 +5303,6 @@
         "y": 79
       },
       "id": 32,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5422,7 +5414,6 @@
         "y": 84
       },
       "id": 36,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5534,7 +5525,6 @@
         "y": 84
       },
       "id": 38,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5646,7 +5636,6 @@
         "y": 84
       },
       "id": 24,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5758,7 +5747,6 @@
         "y": 84
       },
       "id": 21,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5870,7 +5858,6 @@
         "y": 89
       },
       "id": 29,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -5982,7 +5969,6 @@
         "y": 89
       },
       "id": 37,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -6094,7 +6080,6 @@
         "y": 89
       },
       "id": 70,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -6206,7 +6191,6 @@
         "y": 89
       },
       "id": 71,
-      "links": [],
       "options": {
         "legend": {
           "calcs": [],
@@ -6257,8 +6241,7 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -6266,7 +6249,7 @@
         "current": {
           "selected": false,
           "text": "Prometheus",
-          "value": "Prometheus"
+          "value": "b204e0bd-1b02-41f7-903e-8614d3bf4cd3"
         },
         "hide": 0,
         "includeAll": false,
@@ -6283,8 +6266,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Loki",
-          "value": "Loki"
+          "text": "No data sources found",
+          "value": ""
         },
         "hide": 0,
         "includeAll": false,
@@ -6372,6 +6355,6 @@
   "timezone": "",
   "title": "Beacon Processor v2",
   "uid": "1VW73knVz",
-  "version": 23,
+  "version": 1,
   "weekStart": ""
 }
