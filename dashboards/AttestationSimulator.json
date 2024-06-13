@@ -147,7 +147,7 @@
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "1 - increase(validator_monitor_attestation_simulator_head_attester_miss_total[$__range]) / increase(validator_monitor_attestation_simulator_head_attester_hit_total[$__range])",
+          "expr": "increase(validator_monitor_attestation_simulator_head_attester_hit_total[$__range]) /\n  (increase(validator_monitor_attestation_simulator_head_attester_hit_total[$__range]) +\n    increase(validator_monitor_attestation_simulator_head_attester_miss_total[$__range]))",
           "format": "table",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -276,7 +276,7 @@
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "1 - increase(validator_monitor_attestation_simulator_target_attester_miss_total[$__range]) / increase(validator_monitor_attestation_simulator_target_attester_hit_total[$__range])",
+          "expr": "increase(validator_monitor_attestation_simulator_target_attester_hit_total[$__range]) /\n  (increase(validator_monitor_attestation_simulator_target_attester_hit_total[$__range]) +\n    increase(validator_monitor_attestation_simulator_target_attester_miss_total[$__range]))",
           "format": "table",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -345,6 +345,6 @@
   "timezone": "",
   "title": "Attestation Simulator",
   "uid": "b27be6be-6d0d-41da-b10e-7506732b9b8b",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
