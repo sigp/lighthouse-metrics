@@ -1,8 +1,6 @@
 #
 # Metrics services -- provides a web GUI to monitor Lighthouse nodes.
 #
-version: "3.3"
-
 services:
     prometheus:
         build:
@@ -14,13 +12,23 @@ services:
               target: /prometheus/targets
         restart: always
         network_mode: host
+
     grafana:
         build:
             context: grafana
         volumes:
             - grafana-data:/var/lib/grafana
+            - ./grafana/provisioning:/etc/grafana/provisioning  # auto-add Tempo source
         restart: always
         network_mode: host
+
+    tempo:
+        image: grafana/tempo:latest
+        command: [ "-config.file=/etc/tempo.yaml" ]
+        volumes:
+            - ./tempo.yaml:/etc/tempo.yaml
+        restart: always
+        network_mode: host  # enables gRPC/HTTP OTLP on localhost
 
 volumes:
     grafana-data:
