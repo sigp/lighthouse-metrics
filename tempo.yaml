@@ -29,7 +29,9 @@ storage:
     local:
       path: /tmp/tempo/traces
 
-overrides:
-  max_bytes_per_trace: 1000000000  # ~100 MB per trace limit
-  ingestion_rate_limit_bytes: 60000000    # 60MB/sec
-  ingestion_burst_size_bytes: 120000000   # 120MB burst
+stream_over_http_enabled: true
+
+# overrides:
+#   max_bytes_per_trace: 1000000000  # ~100 MB per trace limit
+#   ingestion_rate_limit_bytes: 60000000    # 60MB/sec
+#   ingestion_burst_size_bytes: 120000000   # 120MB burst
