@@ -17,6 +17,10 @@ compactor:
     block_retention: 1h
 
 metrics_generator:
+  processor:
+    local_blocks:
+      filter_server_spans: false
+      flush_to_storage: true
   registry:
     external_labels:
       source: tempo
