@@ -21,6 +21,13 @@ metrics_generator:
     local_blocks:
       filter_server_spans: false
       flush_to_storage: true
+  storage:
+    path: /var/tempo/generator/wal
+    remote_write:
+      - url: http://prometheus:9090/api/v1/write
+        send_exemplars: true
+  traces_storage:
+    path: /var/tempo/generator/traces
   registry:
     external_labels:
       source: tempo
@@ -36,7 +43,7 @@ storage:
 stream_over_http_enabled: true
 
 overrides:
-  metrics_generator_processors: ['local-blocks']
+  metrics_generator_processors: ['local-blocks', 'span-metrics']
 #   max_bytes_per_trace: 1000000000  # ~100 MB per trace limit
 #   ingestion_rate_limit_bytes: 60000000    # 60MB/sec
 #   ingestion_burst_size_bytes: 120000000   # 120MB burst
