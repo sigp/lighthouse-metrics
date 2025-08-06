@@ -12,6 +12,13 @@ services:
               target: /prometheus/targets
         restart: always
         network_mode: host
+        command:
+        - '--web.listen-address=127.0.0.1:9090'
+        - '--config.file=/etc/prometheus/prometheus.yml'
+        - '--storage.tsdb.path=/prometheus'
+        - '--web.enable-remote-write-receiver'
+        - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+        - '--web.console.templates=/usr/share/prometheus/consoles'
 
     grafana:
         build:
