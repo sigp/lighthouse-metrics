@@ -21,6 +21,13 @@ metrics_generator:
     local_blocks:
       filter_server_spans: false
       flush_to_storage: true
+    span_metrics:
+      dimensions:
+        - client
+        - result
+        - non_custody_indices
+        - imported_blocks
+        - missing_column_indexes
   storage:
     path: /var/tempo/generator/wal
     remote_write:
