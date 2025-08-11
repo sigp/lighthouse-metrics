@@ -1,0 +1,56 @@
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+        http:
+
+ingester:
+  trace_idle_period: 10s
+  max_block_duration: 5m
+
+compactor:
+  compaction:
+    block_retention: 1h
+
+metrics_generator:
+  processor:
+    local_blocks:
+      filter_server_spans: false
+      flush_to_storage: true
+    span_metrics:
+      dimensions:
+        - client
+        - result
+        - non_custody_indices
+        - imported_blocks
+        - missing_column_indexes
+  storage:
+    path: /var/tempo/generator/wal
+    remote_write:
+      - url: http://localhost:9090/api/v1/write
+        send_exemplars: true
+  traces_storage:
+    path: /var/tempo/generator/traces
+  registry:
+    external_labels:
+      source: tempo
+
+storage:
+  trace:
+    backend: local
+    wal:
+      path: /tmp/tempo/wal
+    local:
+      path: /tmp/tempo/traces
+
+stream_over_http_enabled: true
+
+overrides:
+  metrics_generator_processors: ['local-blocks', 'span-metrics']
+#   max_bytes_per_trace: 1000000000  # ~100 MB per trace limit
+#   ingestion_rate_limit_bytes: 60000000    # 60MB/sec
+#   ingestion_burst_size_bytes: 120000000   # 120MB burst
